@@ -1,52 +1,64 @@
+@font-face {
+  font-family: "Ladi-Gross", sans-serif;
+;
+  src: url("assets/Ladi-Gross.otf") format("truetype");
+}
+
 body {
-  background-image: url("assets/sky.gif");
-  background-size: cover;
-  height: 100vh;
+  background-color: #fafafa;
+  font-family: sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+
+  background-image: 
+    url("assets/F1.png"),
+    url("assets/F2.png"),
+    url("assets/F3.png"),
+    url("assets/F4.png"),
+    url("assets/F5.png");
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-position: -5% 10%, 98% 4%, 5% 80%, 20% 150%, 100% 100%;
+  background-size: 400px, 280px, 360px, 400px, 400px;
 }
 
-img {
-  height: 150px;
-  border-radius: 20px;
-  padding: 10px;
-  transition: 1s;
-  filter: grayscale(100%);
-  /*      border: 3px solid blue; */
+/* 浮雕标题效果 */
+.title {
+  font-size: 100px;
+  font-family: "Ladi-Gross";
+  font-weight: bold;
+  color: #333;
+  text-shadow: 2px 2px 0 #fff, -2px -2px 0 #ccc;
+  margin-top: 10px;
+  margin-bottom: 50px;
 }
 
-img:hover {
-  height: 400px;
-  filter: grayscale(0%);
-  /*   border: 1px solid red; */
+/* 图片网格 */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
-p:hover {
-  /*   transform: rotate(5deg); */
-  letter-spacing: 1em;
+/* 每张照片的外框 */
+.photo img {
+  width: 100%;
+  border-radius: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
 }
 
-.specialCenter {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* hover 时放大一点加阴影 */
+.photo img:hover {
+  transform: scale(1.2);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-h1,
-a {
-  animation: coolAnimation 3s infinite;
-}
-
-#p1 {
-  animation: coolAnimation 5s infinite;
-}
-
-@keyframes coolAnimation {
-  0% {
-    color: red;
-  }
-  50% {
-    color: green;
-  }
-  100% {
-    color: blue;
-  }
+/* 图片下方文字（时间） */
+.photo p {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #666;
 }
