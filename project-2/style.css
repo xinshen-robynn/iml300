@@ -47,13 +47,11 @@ body {
   cursor: pointer;
 }
 
-/* hover 时放大一点加阴影 */
 .photo img:hover {
   transform: scale(1.2);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* 图片下方文字（时间） */
 .photo p {
   margin-top: 8px;
   font-size: 14px;
