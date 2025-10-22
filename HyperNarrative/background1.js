@@ -13,7 +13,7 @@ let crumbImgs = [];
 const GRAVITY = 0.25;        
 const AIR_DAMP = 0.95;        
 const BOUNCE = 0.15;          
-const GROUND_FRICTION = 0.85; /
+const GROUND_FRICTION = 0.85; 
 const SPAWN_CHANCE = 0.30;    
 const SPAWN_INTERVAL = 90;    
 const SPAWN_MIN_DIST = 28;    
@@ -21,12 +21,12 @@ const MAX_CRUMBS = 120;
 
 let lastSpawnAt = 0;
 let lastSpawnPos = null;
-// -------------------------------------------------------------
+
 
 function preload() {
-  img = loadImage('assets/draft.png');          // 按你现在的路径
+  img = loadImage('assets/draft.png');           
   for (let i = 1; i <= 3; i++) {
-    crumbImgs.push(loadImage(`assets/crumb${i}.png`)); // crumb1/2/3.png
+    crumbImgs.push(loadImage(`assets/crumb${i}.png`));  
   }
 }
 
@@ -34,7 +34,10 @@ function setup() {
   pixelDensity(1);
   const maxW = 900;
   scaleFactor = min(1, maxW / img.width);
-  createCanvas(img.width * scaleFactor, img.height * scaleFactor);
+
+ 
+  const canvas = createCanvas(img.width * scaleFactor, img.height * scaleFactor);
+  canvas.parent('eraserCanvas');
 
   img.resize(width, height);
   drawLayer = createGraphics(width, height);
