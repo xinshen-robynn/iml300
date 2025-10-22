@@ -71,7 +71,7 @@ a.keyword.erased{
   font-size: 20px;
   color: #111;
   text-decoration: none;
-  cursor: url("assets/eraser48.png") 24 24, auto;
+  cursor: url("assets/monoeraser.png") 24 24, auto;
   transition: opacity 0.2s ease;
 }
 
