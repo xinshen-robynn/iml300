@@ -18,10 +18,11 @@ body {
   justify-content: center;
   cursor: url("assets/monoeraser.png") 24 24, auto;
 }
+
 .wrap {
   max-width: 760px;
   width: 100%;
-  padding: 0 20px;
+  padding: 0 25px;
   text-align: center;
 }
 
@@ -42,7 +43,7 @@ a { color: inherit; }
 a.keyword { text-decoration: underline; text-underline-offset: 3px; }
 
 a, a:hover, a:focus, a:active {
-  cursor: url("assets/eraser48.png") 24 24, auto; 
+  cursor: url("assets/monoeraser.png") 24 24, pointer; 
 }
 
 
@@ -78,3 +79,4 @@ a.keyword.erased{
   text-decoration: underline;
   opacity: 0.6;
 }
+
