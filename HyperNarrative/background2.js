@@ -26,7 +26,7 @@ let lastSpawnPos = null;
 function preload() {
   img = loadImage('assets/draft.png');           
   for (let i = 1; i <= 3; i++) {
-    crumbImgs.push(loadImage(`assets/crumb${i}.png`));  
+    crumbImgs.push(loadImage(`assets/Crumb${i}.png`));  
   }
 }
 
