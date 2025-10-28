@@ -20,7 +20,7 @@ function preload() {
   toolImgPen    = loadImage('assets/HandMarker.png');
   toolImgEraser = loadImage('assets/HandEraser.png');
   for (let i = 1; i <= 3; i++) {
-    try { crumbImgs.push(loadImage(`assets/Crumb${i}.png`)); } catch(e) {}
+    try { crumbImgs.push(loadImage(`assets/crumb${i}.png`)); } catch(e) {}
   }
 }
 
