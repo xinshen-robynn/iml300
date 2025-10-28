@@ -4,19 +4,42 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>The Tragedy of an Eraser</title>
+  <!-- Import p5.js and p5.sound library  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js"></script>
+    <!-- Import your own p5 sketch  -->
+  <script src="dropping10.js"></script>
+
   <link rel="stylesheet" href="style.css" />
+  <style>
+  body, a, a:hover, a:focus, a:active {
+    cursor: default !important;
+  }
+
+  #dropping10 canvas {
+    cursor: default !important;
+  }
+</style>
 </head>
 
 
 <body>
   <div class="wrap">
-    <h1>The Tragedy of an Eraser</h1>
-    <p>And maybe that’s the tragedy of an eraser —</p>
-    <p>to <a class="keyword" href="Page1.html">exist</a> only by erasing oneself.</p>
-  
-  <p>Bye</p>
+    <h1>Good Bye</h1>
+    <p>That is how it end</p>
+    <p>Being threw in a <a class="keyword" href="Page1.html">trashcan</a> </p>
   </div>
   
+ <div class="footer">
+    <div class="back-home"><a href="Page1.html">← Back Home</a><a href="Page8.html">← Last Page</a></div>
+    <div class="page-number">9</div>
+    <div class="instruction">Note: Pick up the eraser and throw it</div>
+  </div>
+
+  <img class="bg-img trashcan" src="assets/trashcan.png" alt="">
+  <div id="dropping10"></div>
+
+  <script src="dropping10.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

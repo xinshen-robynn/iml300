@@ -1,26 +1,50 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Proud Beginning</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
 
+  <!-- 只引一次 p5；没用声音就别引 p5.sound -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+
+  <script src="erasing3.js"></script>
+
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+  body, a, a:hover, a:focus, a:active {
+    cursor: default !important;
+  }
+
+  #drawCanvas canvas {
+    cursor: default !important;
+  }
+</style>
+
+</head>
 
 <body>
   <div class="wrap">
     <h1>Proud Beginning</h1>
-    <p>At first, I felt proud. 
-    <p>Each time someone pressed me against paper, I made things better.</p>
-    <p>Cleaner.</p> 
+    <p>I made things</p>
+    <p>Better</p>
+    <p>Cleaner</p>
     <p><a class="keyword" href="Page4.html">Happier</a>.</p>
-    <p>2</p>
   </div>
 
-  <div class="back-home">
-    <a href="Page1.html">← Back Home</a>
-  </div>
+  <div id="drawCanvas"></div>
+
+  <script src="erasing3.js"></script>
+
+<div class="footer">
+  <div class="back-home"><a href="Page1.html">← Back Home</a><a href="Page2.html">← Last Page</a></div>
+  <div class="page-number">2</div>
+  <div class="instruction">Note: Drag Mouse & Press E to switch tool</div>
+</div>
 
   <script src="script.js"></script>
 </body>

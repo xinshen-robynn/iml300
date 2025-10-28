@@ -4,6 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Born to Erase</title>
+  <!-- Import p5.js and p5.sound library  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js"></script>
+    <!-- Import your own p5 sketch  -->
+    <script src="background2.js"></script>
+
+
   <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -11,17 +18,21 @@
 <body>
   <div class="wrap">
     <h1>Born to Erase</h1>
-    <p>I was born to erase.</p>
-    <p>Mistakes, fears, words people regret — that’s my purpose.</p>
-    <p>I live for the quiet satisfaction of clearing what once was.</p>
-    <p>But nobody remembers what an eraser takes away. 
-    <p></p>
-    <p>And only see what <a class="keyword" href="Page3.html">remains</a>.</p>
-    <p>1</p>
+    <p>I clear what once was.</p>
+    <p>Nobody remembers what it takes away. </p>
+    <p>But only see what <a class="keyword" href="Page3.html">remains</a>.</p>
   </div>
   
-  <div class="back-home">
-    <a href="page1.html">← Back Home</a>
+
+  <div id="background2"></div>
+  <!-- <div id="eraserCanvas"> -->
+  <script src="background2.js"></script>
+  <!-- </div> -->
+
+  <div class="footer">
+    <div class="back-home"><a href="Page1.html">← Back Home</a><a href="Page1.html">← Last Page</a></div> 
+    <div class="page-number">1</div>
+    <div class="instruction">Note: Drag to erase</div>
   </div>
 
   <script src="script.js"></script>

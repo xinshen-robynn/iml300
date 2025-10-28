@@ -37,7 +37,7 @@ function setup() {
 
  
   const canvas = createCanvas(img.width * scaleFactor, img.height * scaleFactor);
-  canvas.parent('eraserCanvas');
+  canvas.parent('background2');
 
   img.resize(width, height);
   drawLayer = createGraphics(width, height);
@@ -52,7 +52,7 @@ function draw() {
 
   if (mouseIsPressed && mouseInCanvas()) {
     paintWhite(drawLayer, mouseX, mouseY, pmouseX, pmouseY);
-    maybeSpawnCrumb(mouseX, mouseY); // ← 稀疏生成
+    maybeSpawnCrumb(mouseX, mouseY);  
   }
 
   updateCrumbs();
@@ -65,7 +65,6 @@ function draw() {
   }
 }
 
-// 稀疏生成逻辑：时间 + 距离 + 概率 三重限制
 function maybeSpawnCrumb(x, y) {
   const now = millis();
   const timeOk = (now - lastSpawnAt) >= SPAWN_INTERVAL;
@@ -77,13 +76,12 @@ function maybeSpawnCrumb(x, y) {
   const luckOk = random(1) < SPAWN_CHANCE;
 
   if (timeOk && distOk && luckOk && crumbs.length < MAX_CRUMBS) {
-    spawnCrumbs(x, y, 1); // 每次至多1个
+    spawnCrumbs(x, y, 1);  
     lastSpawnAt = now;
     lastSpawnPos = { x, y };
   }
 }
 
-// === 白色软笔刷 ===
 function paintWhite(g, x, y, px, py) {
   g.noStroke();
   const steps = max(1, int(dist(x, y, px, py) / (brushSize * 0.35)));
@@ -106,7 +104,6 @@ function paintWhite(g, x, y, px, py) {
   }
 }
 
-
 class Crumb {
   constructor(x, y) {
     this.x = x + random(-3, 3);
@@ -127,7 +124,6 @@ class Crumb {
     this.y += this.vy;
     this.rot += this.vr;
 
-    // 地面
     if (this.y > height - this.size / 2) {
       this.y = height - this.size / 2;
       this.vy *= -BOUNCE;          
@@ -164,7 +160,7 @@ function updateCrumbs() {
     crumbs[i].update();
     if (crumbs[i].dead()) crumbs.splice(i, 1);
   }
-  // 保险：如果超过上限，丢掉最老的
+
   if (crumbs.length > MAX_CRUMBS) {
     crumbs.splice(0, crumbs.length - MAX_CRUMBS);
   }

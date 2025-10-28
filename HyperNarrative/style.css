@@ -10,13 +10,15 @@
 
 html, body { height: 100%; margin: 0; }
 body {
-  font-family: "VanillaCreamOX-Regular", sans-serif; /* 回退字体在这里 */
+  font-family: "VanillaCreamOX-Regular", sans-serif; 
   background: #ffffff;
   color: #111;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: url("assets/monoeraser.png") 24 24, auto;
+  -webkit-user-select: none;
+    user-select: none;
 }
 
 .wrap {
@@ -24,20 +26,24 @@ body {
   width: 100%;
   padding: 0 25px;
   text-align: center;
+  position: relative; 
+  z-index: 10; 
 }
 
 h1 { 
-  font-size: 100px; 
+  font-size: 140px; 
   font-weight: 5000; 
-  margin: 0 0 12px; }
+  margin: 0 0 80px; 
+}
 
 p {
   font-family: "FriendsZ-Regular";
-  font-size: 30px;
+  font-size: 40px;
   line-height: 1;
   margin: 4px 0;
   display: block;
 }
+
 
 a { color: inherit; }
 a.keyword { text-decoration: underline; text-underline-offset: 3px; }
@@ -45,7 +51,6 @@ a.keyword { text-decoration: underline; text-underline-offset: 3px; }
 a, a:hover, a:focus, a:active {
   cursor: url("assets/monoeraser.png") 24 24, pointer; 
 }
-
 
 a.keyword{
   position: relative;
@@ -59,24 +64,97 @@ a.keyword.erased{
   text-decoration-color: transparent; 
 }
 
-.back-home {
+#drawCanvas {
   position: fixed;
-  bottom: 20px;
-  width: 100%;
-  text-align: center;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;           
+  pointer-events: none; 
 }
 
-.back-home a {
-  font-family: "FriendsZ-Regular";
+#size4 {
+  position: fixed;
+  top: 100;
+  left: 100;
+  width: 30vw;
+  height: 70vh;
+  z-index: 1;           
+  pointer-events: none;  
+}
+
+#disapper7 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;         
+  pointer-events: auto;  
+}
+
+
+.bg-img {
+  position: fixed;
+  top: -5%;
+  left: 50%;
+  width: 70vw;           
+  height: auto;          
+  object-fit: cover;       
+  z-index: 0;              
+  pointer-events: none;    
+  opacity: 0.9;            
+}
+
+.bg-img.questionMark {
+  top: 10%;
+  left: 65%;
+  width: 30vw;
+}
+.bg-img.twinkle1 {
+  top: 30%;
+  left: 0%;
+  width: 40vw;
+}
+
+.bg-img.twinkle2 {
+  top: -20%;
+  left: -4%;
+  width: 35vw;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;               
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;   
+  align-items: center;
+  padding: 10px 50px 18px;
+  border-top: 1px solid #111;        
+  background: #fff;                    
+  z-index: 20;                        
   font-size: 20px;
-  color: #111;
-  text-decoration: none;
-  cursor: url("assets/monoeraser.png") 24 24, auto;
-  transition: opacity 0.2s ease;
+}
+.footer .back-home   { justify-self: start;  }
+.footer .page-number { justify-self: center; }
+.footer .instruction { justify-self: end;    white-space: nowrap; }
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 0;            /* ✅ 画布在底层 */
+  pointer-events: none;  /* ✅ 不阻挡鼠标与文字交互 */
 }
 
-.back-home a:hover {
-  text-decoration: underline;
-  opacity: 0.6;
+.bg-img.trashcan {
+  top: 40%;
+  left: 65%;
+  width: 30vw;
+  z-index: 1;   
 }
-
