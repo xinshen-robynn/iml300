@@ -76,10 +76,10 @@ a.keyword.erased{
 
 #size4 {
   position: fixed;
-  top: 100;
-  left: 100;
-  width: 30vw;
-  height: 70vh;
+  top: 10%;
+  left: 40%;
+  width: 100vw;
+  height: auto;
   z-index: 1;           
   pointer-events: none;  
 }
@@ -97,14 +97,26 @@ a.keyword.erased{
 
 .bg-img {
   position: fixed;
-  top: -5%;
-  left: 50%;
+  top: 50px;
+  right: 0px;
   width: 70vw;           
   height: auto;          
   object-fit: cover;       
   z-index: 0;              
   pointer-events: none;    
-  opacity: 0.9;            
+  opacity: 1;            
+}
+
+.bg-img.boarder {
+  top: 5%;
+  left: 25%;
+  width: 50vw;
+}
+
+.bg-img.MagicHand {
+  top: 5%;
+  left: 55%;
+  width: 60vw;
 }
 
 .bg-img.questionMark {
@@ -142,14 +154,12 @@ a.keyword.erased{
 .footer .page-number { justify-self: center; }
 .footer .instruction { justify-self: end;    white-space: nowrap; }
 
-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw !important;
-  height: 100vh !important;
-  z-index: 0;            /* ✅ 画布在底层 */
-  pointer-events: none;  /* ✅ 不阻挡鼠标与文字交互 */
+.bg-img.line {
+  top: -20%;
+  left: -40%;
+  width: 120vw;
+  z-index: 0;   
+  opacity: 0.6;
 }
 
 .bg-img.trashcan {
@@ -157,4 +167,13 @@ canvas {
   left: 65%;
   width: 30vw;
   z-index: 1;   
+}
+
+#dropping10 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;         
 }

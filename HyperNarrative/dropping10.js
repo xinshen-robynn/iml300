@@ -26,7 +26,7 @@ function preload() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
   const canvas = createCanvas(windowWidth, windowHeight);
-//   canvas.parent('dropping10');
+  canvas.parent('dropping10');
   imageMode(CENTER);
   noCursor();
 
@@ -40,7 +40,7 @@ function windowResized() {
 }
 
 function draw() {
-  background(245);
+  background(255);
 
   updateEraser();
 

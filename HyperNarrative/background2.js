@@ -32,18 +32,15 @@ function preload() {
 
 function setup() {
   pixelDensity(1);
-  const maxW = 900;
-  scaleFactor = min(1, maxW / img.width);
 
- 
-  const canvas = createCanvas(img.width * scaleFactor, img.height * scaleFactor);
-  canvas.parent('background2');
+  let canvas = createCanvas(windowWidth * 0.5, windowHeight);
+  canvas.parent("background2");
 
   img.resize(width, height);
   drawLayer = createGraphics(width, height);
   drawLayer.clear();
-  background(255);
 }
+
 
 function draw() {
   background(255);

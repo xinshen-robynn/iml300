@@ -14,6 +14,12 @@ function setup() {
   const c = createCanvas(windowWidth, windowHeight);  
   c.parent('size4');                                 
   imageMode(CENTER);
+  positions = [
+    { x: 200, y: 200, w: 500, h: 400 },
+    { x: 200, y: 200, w: 500, h: 400 },
+    { x: 200, y: 200, w: 500, h: 400 },
+    { x: 200, y: 200, w: 500, h: 400 }
+  ];
 }
 
 function draw() {
