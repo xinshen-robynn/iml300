@@ -159,7 +159,7 @@ a.keyword.erased{
   left: -40%;
   width: 120vw;
   z-index: 0;   
-  opacity: 0.6;
+  opacity: 1;
 }
 
 .bg-img.trashcan {
