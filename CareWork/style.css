@@ -1,0 +1,411 @@
+* {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "臺灣新細明體";       
+  src: url("DragAssets/臺灣新細明體.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+body {
+  margin: 0;
+  background: #af0000; /* 红色背景，想改就改这里 */
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  color: #000;
+}
+
+/* 顶部导航 */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  background: #fff;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+
+.logo-left,
+.logo-center,
+.logo-right {
+  font-weight: 700;
+}
+
+/* 让链接不要变蓝、有下划线 */
+.logo-center {
+  color: #000;
+  text-decoration: none;
+}
+
+/* Collage 容器 */
+.collage-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0 60px;
+}
+
+.collage {
+  position: relative;
+  width: min(90vw, 1100px); /* 随窗口缩放 */
+  aspect-ratio: 16 / 10;    /* 大概比例 */
+}
+
+
+.collage-item {
+  position: absolute;
+  overflow: hidden;
+  box-shadow: 0 20px 25px rgba(0,0,0,0.7);
+}
+
+.collage-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 每一张图片的位置 & 大小（百分比） */
+.item1 {
+  width: 50%;
+  top: 5%;
+  left: -5%;
+  z-index: 2;
+}
+
+.item2 {
+  width: 25%;
+  top: 0%;
+  left: 35%;
+  z-index: 5;
+}
+
+.item3 {
+  width: 40%;
+  top: 30%;
+  right: -10%;
+  z-index: 2;
+}
+
+.item4 {
+  width: 24%;
+  top: 42%;
+  left: 20%;
+  z-index: 3;
+}
+
+.item5 {
+  width: 32%;
+  top: 34%;
+  left: 40%;
+  z-index: 1;
+}
+
+.item6 {
+  width: 30%;
+  top: 70%;
+  left: 70%;
+  z-index: 4;
+}
+
+.item7 {
+  width: 30%;
+  top: 55%;
+  left: -10%;
+  z-index: 3;
+}
+
+.item8 {
+  width: 25%;
+  top: 5%;
+  left: 60%;
+  z-index: 4;
+}
+
+/* 華笙 + 无 共用的金属字效果 */
+.big-title,
+.page2-mu, 
+.page3-ling{
+  font-family: "臺灣新細明體";
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  white-space: nowrap;
+
+  color: transparent;
+  background-image: linear-gradient(
+    120deg,
+    #fdfdfd 0%,
+    #b9bcc3 18%,
+    #ffffff 35%,
+    #8b8e96 55%,
+    #f5f5f7 75%,
+    #b0b3bc 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  text-shadow:
+    0 2px 4px rgb(255, 0, 0),
+    0 -1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.big-title {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  transform: translateY(-50%);
+
+  text-align: center;
+  font-size: 30vw;
+  line-height: 0.9;
+
+  z-index: 999;
+  cursor: pointer;
+  pointer-events: auto;
+  transition:
+    transform 0.4s ease,
+    filter 0.4s ease,
+    text-shadow 0.4s ease;
+}
+
+
+
+.big-title.big-title-active {
+  transform: translateY(-50%) scale(1.2);   /* 变大 */
+  filter: brightness(1.5);                  /* 变亮 */
+  text-shadow:
+    0 0 20px rgba(255, 255, 255, 0.9),
+    0 0 40px rgba(255, 0, 150, 0.9),
+    0 0 80px rgba(0, 255, 200, 0.8);        /* 霓虹光晕 */
+}
+
+
+/* Weekly Feature 区块 */
+.weekly-section {
+  padding: 40px 24px 80px;
+  color: #fff;
+}
+
+.weekly-inner {
+  max-width: min(90vw, 1100px);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.weekly-left {
+  flex: 0 0 auto;
+}
+
+.weekly-hanzi {
+  
+}
+
+.weekly-right {
+  flex: 1;
+}
+
+.weekly-title {
+  margin: 0 0 8px;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.weekly-desc {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+
+
+/* ---------- Page 2 左右布局 ---------- */
+
+.page2-layout {
+  display: flex;
+  min-height: calc(100vh - 56px); /* 预留导航高度，大约 56px，可按你 header 高度调 */
+}
+
+/* 左边：一直都在的大矩形 */
+.page2-left {
+  flex: 0 0 28%;                  /* 左栏宽度，可改 25% / 30% */
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+  position: sticky;
+  top: 56px;                      /* 跟 header 高度对应，这样滚动时刚好贴在 header 下 */
+  align-self: flex-start;
+}
+
+/* 为了让左边这一块本身撑满一屏高度 */
+.page2-left-inner {
+  position: relative;
+  height: calc(100vh - 56px);  /* 一整屏高 */
+  overflow: hidden;            /* 超出的部分裁掉 */
+}
+
+
+.page2-mu {
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  transform: translate(-50%, -50%) scale(0.8); /* 想更夸张就把 1.1 改大 */
+
+  /* 用视口高度来撑满左边 */
+  font-size: 90vh;
+  line-height: 1;
+  text-align: center;
+  cursor: pointer;       /* 鼠标显示为手指 */
+  pointer-events: auto;  /* 允许点击 */
+}
+
+
+/* 右边：可滚动内容区域 */
+.page2-right {
+  flex: 1;
+  padding: 40px 40px 80px;
+  color: #ffffff;                 /* 右侧文字用白色，配红底更清晰 */
+}
+
+/* 每一块内容的基本样式 */
+.rave-block {
+  max-width: 720px;
+  margin-bottom: 48px;
+}
+
+.rave-block h2,
+.rave-block h3 {
+  margin: 0 0 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 16px;
+}
+
+.rave-block p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.rave-video {
+  position: relative;
+  margin: 24px 0 40px;
+
+  /* 让里面的内容水平居中 */
+  display: flex;
+  justify-content: center;
+}
+
+/* 视频本身：最大宽度 720px，居中 */
+.rave-video video {
+  width: 100%;
+  max-width: 720px;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4);
+}
+
+
+
+/* ---------- Page 3 左右布局 ---------- */
+
+.page3-layout {
+  display: flex;
+  min-height: calc(100vh - 56px); /* 56px 对应你 header 高度，和前一页保持一致 */
+}
+
+/* 左栏 sticky */
+.page3-left {
+  flex: 0 0 28%;
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+  position: sticky;
+  top: 56px;                  /* 让它卡在 fixed header 下面 */
+  align-self: flex-start;
+}
+
+/* 让左栏内部可以放一个超大的「灵」并裁切 */
+.page3-left-inner {
+  position: relative;
+  height: calc(100vh - 56px);
+  overflow: hidden;
+}
+
+/* 「灵」：像「无」一样，撑爆左侧 */
+.page3-ling {
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  transform: translate(-50%, -50%) scale(0.8);
+
+  font-size: 90vh;            /* 用视口高度来控制大小，想更夸张就调大 */
+
+  text-align: center;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* 右侧内容区域 */
+.page3-right {
+  flex: 1;
+  padding: 40px 40px 80px;
+  color: #ffffff;
+}
+
+/* 整个 gallery 容器：一行多卡片，自动换行 */
+.poster-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;                   /* 在右侧区域内部居中 */
+}
+
+/* 每一张海报卡片 */
+.poster-item {
+  flex: 0 0 230px;                  /* 每张卡片宽度，想更宽就改这里 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 海报图片：圆角 + 阴影 + 竖版比例 */
+.poster-item img {
+  width: 100%;
+  aspect-ratio: 3 / 4;              /* 海报竖向比例，可改 2/3、9/16 等 */
+  object-fit: cover;
+  display: block;
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.55);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    filter 0.25s ease;
+}
+
+/* 海报下面的文字说明 */
+.poster-caption {
+  margin-top: 8px;
+  font-size: 12px;
+  line-height: 1.6;
+  text-align: center;
+  color: #f7f7f7;
+}
+
+/* hover 效果：微微抬起 + 变亮 */
+.poster-item:hover img {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.8);
+  filter: brightness(1.08);
+}

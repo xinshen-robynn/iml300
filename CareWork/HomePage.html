@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>My Collage Homepage</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  
+  <body>
+
+    <!-- 顶部导航 -->
+    <header>
+        <div class="logo-left">Space Matters</div>
+        <a href="HomePage.html" class="logo-center">華夜</a>
+        <div class="logo-right">Menu</div>
+    </header>
+
+    <!-- Collage 主体 -->
+    <div class="collage-wrapper">
+      <div class="collage">
+        <!-- 大标题 -->
+        <div class="big-title" id="bigTitle">華笙</div>
+        
+        <!-- 图片 -->
+        <div class="collage-item item1">
+          <img src="DragAssets/HP1.jpg" alt="collage image 1">
+        </div>
+        <div class="collage-item item2">
+          <img src="DragAssets/HP2.jpg" alt="collage image 2">
+        </div>
+        <div class="collage-item item3">
+          <img src="DragAssets/HP3.jpg" alt="collage image 3">
+        </div>
+        <div class="collage-item item4">
+          <img src="DragAssets/HP4.jpg" alt="collage image 4">
+        </div>
+        <div class="collage-item item5">
+          <img src="DragAssets/HP5.jpg" alt="collage image 5">
+        </div>
+        <div class="collage-item item6">
+          <img src="DragAssets/HP6.jpg" alt="collage image 6">
+        </div>
+        <div class="collage-item item7">
+          <img src="DragAssets/HP7.jpg" alt="collage image 7">
+        </div>
+        <div class="collage-item item8">
+          <img src="DragAssets/HP8.jpg" alt="collage image 8">
+        </div>
+
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const bigTitle = document.getElementById("bigTitle");
+        if (!bigTitle) return;
+
+        bigTitle.addEventListener("click", function () {
+          // 1. 先加动画 class
+          bigTitle.classList.add("big-title-active");
+
+          // 2. 等动画播一下，再跳转到第二页
+          setTimeout(function () {
+            window.location.href = "ClubClosed.html"; // 把这个改成你真正的第二页文件名
+          }, 600); // 0.6 秒，可自己调
+        });
+      });
+    </script>
+
+  </body>
+</html>

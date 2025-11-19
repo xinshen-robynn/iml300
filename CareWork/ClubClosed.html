@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>華笙 · Rave Index</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <!-- 顶部导航（和首页一样） -->
+    <header>
+        <div class="logo-left">Space Matters</div>
+        <a href="HomePage.html" class="logo-center">華夜</a>
+        <div class="logo-right">Menu</div>
+    </header>
+
+    <!-- 整页左右两栏布局 -->
+    <div class="page2-layout">
+      
+      <!-- 左边：一直都在的大「无」 -->
+      <aside class="page2-left">
+        <div class="page2-left-inner">
+          <div class="page2-mu" id="muLink">無</div>
+        </div>
+      </aside>
+
+      <!-- 右边：可以滚动的内容 -->
+      <main class="page2-right">
+        <div class="rave-video">
+            <video
+            src="DragAssets/AllClub.mp4"
+            controls
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata">
+            您的浏览器不支持视频标签。
+            </video>
+        </div>
+
+        <section class="rave-block">
+          <h2>离开</h2>
+          <p>。。。。。。。。。</p>
+        </section>
+        <section class="rave-block">
+          <h2>。。。。</h2>
+          <p>。。。。。。。。。</p>
+        </section>
+        <section class="rave-block">
+          <h2>。。。。</h2>
+          <p>。。。。。。。。。</p>
+        </section>
+        
+        <!-- 继续往下加 rave-block 就可以 -->
+      </main>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const mu = document.getElementById("muLink");
+            if (!mu) return;
+
+            mu.addEventListener("click", function () {
+            window.location.href = "RaveGallery.html"; // 换成你第三页的真实文件名
+            });
+        });
+    </script>
+  </body>
+</html>

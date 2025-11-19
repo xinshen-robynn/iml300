@@ -1,0 +1,59 @@
+@font-face {
+  font-family: "Ladi-Gross", sans-serif;
+;
+  src: url("assets/Ladi-Gross.otf") format("truetype");
+}
+
+body {
+  background-color: #fafafa;
+  font-family: sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+
+  background-image: 
+    url("assets/F1.png"),
+    url("assets/F2.png"),
+    url("assets/F3.png"),
+    url("assets/F4.png"),
+    url("assets/F5.png");
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-position: -5% 10%, 98% 4%, 5% 80%, 20% 150%, 100% 100%;
+  background-size: 400px, 280px, 360px, 400px, 400px;
+}
+
+.title {
+  font-size: 100px;
+  font-family: "Ladi-Gross";
+  font-weight: bold;
+  color: #333;
+  text-shadow: 2px 2px 0 #fff, -2px -2px 0 #ccc;
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 10px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.photo img {
+  width: 100%;
+  border-radius: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.photo img:hover {
+  transform: scale(1.2);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.photo p {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #666;
+}
