@@ -5,7 +5,7 @@ let audioLoaded = false;
 function preload() {
   soundFormats('mp3', 'wav', 'ogg');
   // 👇 路径跟你现在用的音频一样
-  song = loadSound('Asset/Zhuo.mp3', () => {
+  song = loadSound('Asset/ZHUO.MP3', () => {
     audioLoaded = true;
     song.setVolume(0.25);
   });
