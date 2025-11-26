@@ -1,0 +1,182 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body.history-horizontal {
+  height: 100vh;
+  overflow: hidden; /* 禁止 window 滚动，scroll 区域自己滚 */
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  background: #ffffff;
+}
+
+/* ---------- 顶部导航 ---------- */
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 56px;
+
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+
+  background: #ffffff;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0.08em;
+  z-index: 100;
+}
+
+.logo-left {
+  flex: 0 0 auto;
+}
+
+.logo-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: 700;
+  color: #000000;
+  text-decoration: none;
+}
+
+.nav-right {
+  margin-left: auto;
+  display: flex;
+  gap: 6px;
+  text-transform: uppercase;
+}
+
+.nav-right a {
+  text-decoration: none;
+  color: #000;
+}
+
+/* ---------- 横向滚动主体 ---------- */
+
+.history-scroll {
+  position: absolute;
+  top: 56px;
+  bottom: 36px; /* 留给刻度条 */
+  left: 0;
+  right: 0;
+
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+
+  padding: 40px 80px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  /* scroll-behavior: smooth; */
+
+  background: #ffffff;
+  color: #d60000;
+}
+
+.history-column {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 默认宽度 */
+.history-column--normal {
+  width: 260px;
+}
+
+.history-column--widest {
+  width: 400px;
+}
+
+/* 比较窄的文本列 */
+.history-column--narrow {
+  width: 200px;
+}
+
+/* 比较宽的文本 + 图片列 */
+.history-column--wide {
+  width: 320px;
+}
+
+/* 对齐上边（默认） */
+.history-column--top {
+  margin-top: 0;
+}
+
+/* 稍微往下 */
+.history-column--mid {
+  margin-top: 80px;
+}
+
+/* 更低一点 */
+.history-column--low {
+  margin-top: 160px;
+}
+
+.history-column--lowest {
+  margin-top: 240px;
+}
+
+
+.intro {
+  width: 320px;
+}
+
+.history-column h2 {
+  margin: 6px 0 10px;
+  font-size: 18px;
+}
+
+.year {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  margin-bottom: 4px;
+}
+
+
+/* 如果你还在用 <div class="img"> 作为占位 */
+.img,
+.history-img {              /* 两种写法一起覆盖 */
+  margin-top: 10px;         /* 👈 文字和图片之间的距离都在这改 */
+}
+
+
+/* ---------- 底部刻度条 ---------- */
+
+.history-strip {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  height: 36px;
+  background: #ffffff;
+  border-top: 1px solid #ffd6d6;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 16px;
+  padding-bottom: 6px;
+}
+
+.tick {
+  width: 2px;
+  height: 18px;
+  background: #d60000;
+}
+
+.history-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 2px;
+  height: 24px;
+  background: #d60000;
+  transform: translateX(0);
+}
