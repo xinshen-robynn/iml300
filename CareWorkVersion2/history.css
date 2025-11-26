@@ -6,24 +6,22 @@
 
 body.history-horizontal {
   height: 100vh;
-  overflow: hidden; /* 禁止 window 滚动，scroll 区域自己滚 */
+  overflow: hidden;
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-  background: #ffffff;
+  background: #ffffff;  /* 随便给个深色，p5 会在上面再画 */
 }
 
-/* ---------- 顶部导航 ---------- */
 
+/* header ... */
 header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 56px;
-
   display: flex;
   align-items: center;
   padding: 0 24px;
-
   background: #ffffff;
   color: #000000;
   font-size: 20px;
@@ -56,12 +54,10 @@ header {
   color: #000;
 }
 
-/* ---------- 横向滚动主体 ---------- */
-
 .history-scroll {
   position: absolute;
   top: 56px;
-  bottom: 36px; /* 留给刻度条 */
+  bottom: 36px;
   left: 0;
   right: 0;
 
@@ -72,11 +68,13 @@ header {
   padding: 40px 80px;
   overflow-x: auto;
   overflow-y: hidden;
-  /* scroll-behavior: smooth; */
 
-  background: #ffffff;
+  /* 底色交给 p5-bg 来提供，这里用透明 */
+  background: transparent;
   color: #d60000;
 }
+
+
 
 .history-column {
   flex-shrink: 0;
@@ -84,48 +82,16 @@ header {
   flex-direction: column;
 }
 
-/* 默认宽度 */
-.history-column--normal {
-  width: 260px;
-}
+.history-column--normal { width: 260px; }
+.history-column--widest { width: 400px; }
+.history-column--narrow { width: 200px; }
+.history-column--wide { width: 320px; }
+.history-column--top { margin-top: 0; }
+.history-column--mid { margin-top: 80px; }
+.history-column--low { margin-top: 160px; }
+.history-column--lowest { margin-top: 240px; }
 
-.history-column--widest {
-  width: 400px;
-}
-
-/* 比较窄的文本列 */
-.history-column--narrow {
-  width: 200px;
-}
-
-/* 比较宽的文本 + 图片列 */
-.history-column--wide {
-  width: 320px;
-}
-
-/* 对齐上边（默认） */
-.history-column--top {
-  margin-top: 0;
-}
-
-/* 稍微往下 */
-.history-column--mid {
-  margin-top: 80px;
-}
-
-/* 更低一点 */
-.history-column--low {
-  margin-top: 160px;
-}
-
-.history-column--lowest {
-  margin-top: 240px;
-}
-
-
-.intro {
-  width: 320px;
-}
+.intro { width: 320px; }
 
 .history-column h2 {
   margin: 6px 0 10px;
@@ -138,26 +104,21 @@ header {
   margin-bottom: 4px;
 }
 
-
-/* 如果你还在用 <div class="img"> 作为占位 */
+/* 文字和图片之间的间距 */
 .img,
-.history-img {              /* 两种写法一起覆盖 */
-  margin-top: 10px;         /* 👈 文字和图片之间的距离都在这改 */
+.history-img {
+  margin-top: 10px;
 }
 
-
-/* ---------- 底部刻度条 ---------- */
-
+/* 底部刻度条 */
 .history-strip {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-
   height: 36px;
   background: #ffffff;
   border-top: 1px solid #ffd6d6;
-
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -179,4 +140,22 @@ header {
   height: 24px;
   background: #d60000;
   transform: translateX(0);
+}
+
+#p5-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  /* 白色背景，这样整体还是白底 */
+  background: #ffffff;
+}
+
+/* 确保内容盖在画布上面 */
+header,
+.history-scroll,
+.history-strip {
+  position: relative;
+  z-index: 10;
 }

@@ -22,6 +22,8 @@
       <span>/ ... of the Night</span>
     </nav>
   </header>
+  
+  <div id="p5-bg"></div>
 
   <!-- 横向内容容器 -->
   <main class="history-scroll">
@@ -36,6 +38,12 @@
         queer crews, festivals, and cloud rave, all stitched together
         by people who kept showing up after dark.
       </p>
+      <img
+        id="audio-toggle"
+        class="audio-toggle-img"
+        src="Asset/拨浪鼓.png"
+        alt="Play / pause Night Matter mix"
+      />
     </section>
 
     <!-- 以下每一段都是一列 -->
@@ -51,7 +59,7 @@
           </p>
       <img
             class="history-img"
-            src="Asset/dakoucropped.jpg"
+            src="Asset/dakoucropped.png"
             alt="Smuggled CDs in a smoky ballroom"
             />
     </section>
@@ -68,7 +76,7 @@
           </p>
       <img
             class="history-img"
-            src="Asset/HP2.jpg"
+            src="Asset/Cheese.png"
             alt="A rave on the Great Wall"
             />
     </section>
@@ -102,7 +110,7 @@
           </p>
       <img
             class="history-img"
-            src="Asset/backroom.jpg"
+            src="Asset/backroom.png"
             alt="Basements and back rooms"
             />
     </section>
@@ -118,7 +126,7 @@
           </p>
       <img
             class="history-img"
-            src="Asset/edm.jpg"
+            src="Asset/edm.png"
             alt="Festivals & mass EDM"
             />
     </section>
@@ -134,7 +142,7 @@
           </p>
       <img
             class="history-img"
-            src="Asset/dragqueen.jpg"
+            src="Asset/dragqueen.png"
             alt="Queer nights & new club cities"
             />
     </section>
@@ -151,7 +159,7 @@
           </p>
       <img
             class="history-img"
-            src="Asset/Scene-China2.jpg"
+            src="Asset/Scene-China2.png"
             alt="Cloud raves"
             />
     </section>
@@ -187,20 +195,16 @@
   const progressLine = document.querySelector('.history-progress');
   const strip = document.querySelector('.history-strip');
 
-  // 竖向滚轮 → 横向滚动
   scroller.addEventListener('wheel', function (e) {
-    // 如果本来就是横向滑（两指左右推），让浏览器自己处理
     if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
-
-    e.preventDefault();                    // 阻止默认上下滚
-    scroller.scrollLeft += e.deltaY * 0.7; // *0.7 调节速度，嫌快就改小
+    e.preventDefault();
+    scroller.scrollLeft += e.deltaY * 0.7;
     updateProgress();
   }, { passive: false });
 
   function updateProgress() {
     const maxScroll = scroller.scrollWidth - scroller.clientWidth;
     if (maxScroll <= 0) return;
-
     const ratio = scroller.scrollLeft / maxScroll;
     const barWidth = strip.offsetWidth;
     const x = ratio * barWidth;
@@ -210,8 +214,22 @@
   scroller.addEventListener('scroll', updateProgress);
   window.addEventListener('resize', updateProgress);
   updateProgress();
+
+  const audioToggle = document.getElementById('audio-toggle');
+  if (audioToggle) {
+    audioToggle.addEventListener('click', () => {
+      if (typeof toggleHistoryAudio === 'function') {
+        toggleHistoryAudio();
+        audioToggle.classList.toggle('is-playing');
+      }
+    });
+  }
 </script>
 
+<!-- 一定要先 p5，再 p5.sound，再 historyWave.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/addons/p5.sound.min.js"></script>
+<script src="historyWave.js"></script>
 
 </body>
 </html>
