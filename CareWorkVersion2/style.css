@@ -16,7 +16,7 @@ html, body {
 
 @font-face {
   font-family: "臺灣新細明體";
-  src: url("DragAssets/臺灣新細明體.ttf") format("truetype");
+  src: url("Asset/臺灣新細明體.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -36,58 +36,129 @@ header {
   left: 0;
   right: 0;
 
-  height: 56px;                 /* 定一个高度，方便垂直居中 */
+  height: 56px;
   padding: 0 24px;
   box-sizing: border-box;
 
   display: flex;
   align-items: center;
 
-  background: #ffffff;          /* 深棕色 */
-  color: #000000;
+  background: #ffffff;
+  color: #9f0000;
   font-size: 20px;
+  font-weight: 1000;
   letter-spacing: 0.08em;
   z-index: 1000;
 }
 
-
 .logo-left {
-  color: #000000;
-  flex: 0 0 auto;               /* 左边内容 */
+  flex: 0 0 auto;
 }
 
-/* 右侧导航 */
-.nav-right {
-  margin-left: auto;            /* 顶到最右边 */
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  color: #000000;
-  text-transform: uppercase;
-}
-
-.nav-right a {
-  color: #000000;
-  text-decoration: none;
-  padding-bottom: 2px;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.2s ease, opacity 0.2s ease;
-}
-
-.nav-right a:hover {
-  border-color: #000000;
-  opacity: 0.8;
-}
-
+/* 居中的「華夜」logo */
 .logo-center {
-  position: absolute;           /* 相对 header 绝对定位 */
+  position: absolute;
   left: 50%;
-  transform: translateX(-50%);  /* 精准居中 */
-
+  transform: translateX(-50%);
   color: #000000;
   text-decoration: none;
   font-weight: 700;
 }
+
+/* 右侧导航区域保持不变，只是里面改成 button */
+.nav-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.menu-button {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+
+  /* 关键：全部继承 header 的字体设定 */
+  font-family: inherit;       /* ✅ 跟 NIGHT MATTERS 一样的字体 */
+  font-size: inherit;         /* 20px */
+  font-weight: inherit;       /* 1000 */
+  letter-spacing: inherit;    /* 0.08em */
+  color: inherit;             /* #9f0000 */
+
+  text-transform: uppercase;
+
+  /* 去掉默认按钮样式（mac 上尤其明显） */
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+
+
+/* 点击后可以用 open 做一些小变化（可选） */
+.menu-button.open {
+  opacity: 0.7;
+}
+
+/* ========= 弹出菜单背景 ========= */
+
+.menu-bg {
+  position: fixed;
+  inset: 0;                          /* top/right/bottom/left 全部 0 */
+  background: rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  z-index: 800;                      /* 在内容上面、header 下面 */
+}
+
+.menu-bg.cover {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ========= 弹出菜单本体 ========= */
+
+.menu {
+  position: fixed;
+  top: 56px;                         /* 贴在 header 下边 */
+  right: 0;
+  width: 220px;
+  padding: 24px 20px;
+  background: #ffffff;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: right;
+
+  transform: translateY(-15px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 900;
+}
+
+.menu.open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.menu a {
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #d60000;
+}
+
+.menu a:hover {
+  opacity: 0.7;
+}
+
+
+
+
 
 /* ---------- Collage 主体 ---------- */
 
@@ -180,6 +251,8 @@ header {
 
 /* ---------- 华笙 金属大字 ---------- */
 
+/* ---------- 华笙 title 图片：在所有 collage 上面 ---------- */
+
 .big-title {
   position: absolute;
   top: 50%;
@@ -187,35 +260,13 @@ header {
   width: 100%;
   transform: translateY(-50%);
   text-align: center;
+  z-index: 999;        /* 确保盖在所有 collage 图片上 */
+  pointer-events: none; /* 不遮挡下面的 hover / 点击 */
+}
 
-  font-family: "臺灣新細明體";
-  font-weight: 900;
-  letter-spacing: 0.2em;
-  white-space: nowrap;
-  font-size: 30vw;
-  line-height: 0.9;
-
-  /* 金属渐变 */
-  color: transparent;
-  background-image: linear-gradient(
-    120deg,
-    #fdfdfd 0%,
-    #b9bcc3 18%,
-    #ffffff 35%,
-    #8b8e96 55%,
-    #f5f5f7 75%,
-    #b0b3bc 100%
-  );
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-
-  text-shadow:
-    0 2px 4px rgb(255, 0, 0),
-    0 -1px 0 rgba(255, 255, 255, 0.8);
-
-  z-index: 999;
-
-  /* 不再可点击 */
-  pointer-events: none;
+.big-title img {
+  display: block;
+  margin: 0 auto;
+  width: 100%;          /* ✅ 图片大小在这里调，想更大就 70%，想更小就 40% */
+  height: auto;
 }

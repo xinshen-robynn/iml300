@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  <title>About · 華夜</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="about.css">
+</head>
+
+<body class="about-page">
+
+  <!-- 顶部导航：跟其他页面一样 -->
+  <header>
+      <div class="logo-left">NIGHT MATTERS</div>
+
+      <a href="HomePage.html" class="logo-center">華夜</a>
+
+      <!-- 右上角：只保留一个 ... OF THE NIGHT 的按钮 -->
+      <nav class="nav-right">
+        <button class="menu-button">
+          ... OF THE NIGHT
+        </button>
+      </nav>
+
+    <!-- 菜单的半透明背景 -->
+    <div class="menu-bg"></div>
+
+    <!-- 下拉 / 弹出菜单 -->
+    <nav class="menu">
+      <a href="History.html">History</a>
+      <a href="Collection.html">Collection</a>
+      <a href="Future.html">Future</a>
+      <a href="About.html">About</a>
+    </nav>
+  </header>
+
+  <!-- 只放一张 About 素材图 -->
+  <main class="about-main">
+    <img src="Asset/ABOUT.png" alt="About Night Matter" class="about-poster">
+  </main>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+$(document).ready(function () {
+  $('.menu-button').click(function () {
+    $(this).toggleClass('open');
+    $('.menu').toggleClass('open');
+    $('.menu-bg').toggleClass('cover');
+  });
+
+  // 点击背景也关闭菜单
+  $('.menu-bg').click(function () {
+    $('.menu-button').removeClass('open');
+    $('.menu').removeClass('open');
+    $('.menu-bg').removeClass('cover');
+  });
+});
+</script>
+
+</body>
+</html>

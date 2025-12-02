@@ -1,0 +1,365 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 只给 Collection 这一页用的 body 样式 */
+body.collection-page {
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  background: #ffffff;
+}
+
+/* 顶部导航栏：白色底，红色字 */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  background: #ffffff;
+  color: #9f0000;
+  font-size: 20px;
+  font-weight: 1000;
+  letter-spacing: 0.08em;
+  z-index: 20;
+}
+
+.logo-left {
+  flex: 0 0 auto;
+}
+
+.logo-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: 700;
+  color: #000000;
+  text-decoration: none;
+}
+
+.nav-right {
+  font-size: 20px;
+  margin-left: auto;
+  display: flex;
+  gap: 6px;
+  text-transform: uppercase;
+}
+
+.menu-button {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+
+  /* 关键：全部继承 header 的字体设定 */
+  font-family: inherit;       /* ✅ 跟 NIGHT MATTERS 一样的字体 */
+  font-size: inherit;         /* 20px */
+  font-weight: inherit;       /* 1000 */
+  letter-spacing: inherit;    /* 0.08em */
+  color: inherit;             /* #9f0000 */
+
+  text-transform: uppercase;
+
+  /* 去掉默认按钮样式（mac 上尤其明显） */
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+
+
+/* 点击后可以用 open 做一些小变化（可选） */
+.menu-button.open {
+  opacity: 0.7;
+}
+
+/* ========= 弹出菜单背景 ========= */
+
+.menu-bg {
+  position: fixed;
+  inset: 0;                          /* top/right/bottom/left 全部 0 */
+  background: rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  z-index: 800;                      /* 在内容上面、header 下面 */
+}
+
+.menu-bg.cover {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ========= 弹出菜单本体 ========= */
+
+.menu {
+  position: fixed;
+  top: 56px;                         /* 贴在 header 下边 */
+  right: 0;
+  width: 220px;
+  padding: 24px 20px;
+  background: #ffffff;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: right;
+
+  transform: translateY(-15px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 900;
+}
+
+.menu.open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.menu a {
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #d60000;
+}
+
+.menu a:hover {
+  opacity: 0.7;
+}
+
+
+/* 背景祥云 canvas */
+#cloud-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* 整页内容：把中间那块整体居中 */
+.collection-main {
+  min-height: 100vh;
+  padding-top: 56px;              /* 让出给 header */
+  display: flex;
+  align-items: center;            /* 垂直居中 */
+  justify-content: center;        /* 水平居中 */
+  background: #ffffff;
+}
+
+/* 中间“花 + 东西南北 / 展开的折纸”这一块 */
+.collection-center {
+  position: relative;
+  display: inline-block;          /* 不要 flex，让中间那块作为一个整体 */
+}
+
+/* 关闭状态的花 */
+.collection-image {
+  max-width: 40vw;
+  height: auto;
+  display: block;
+}
+
+/* 四个方向字的共同样式 */
+.char {
+  position: absolute;
+  max-height: 50%;
+  width: auto;
+  display: block;
+  cursor: pointer;
+}
+
+/* 东西南北的位置（你可以微调数值） */
+.char-east {
+  top: 50%;
+  left: 100%;
+  transform: translate(-150px, -50%);
+}
+
+.char-west {
+  top: 50%;
+  right: 100%;
+  transform: translate(150px, -50%);
+}
+
+/* 北：在花的上方 */
+.char-north {
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+
+/* 南：在花的下方 */
+.char-south {
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+
+/* 展开后的折纸容器（取代 collection-image） */
+.detail-photo {
+  position: relative;             /* 让下面的 .city 相对它定位 */
+  display: none;                  /* 默认隐藏，点击方向才显示 */
+}
+
+/* 展开折纸图片本身 */
+.detail-photo .photo {
+  display: none;
+  max-width: 40vw;
+  height: auto;
+}
+
+/* 叠在白色区域上的城市字：京/沪/蜀/粤 */
+.city {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);  /* 先放在中心 */
+  width: 120px;
+  height: auto;
+  display: none;
+  pointer-events: none;
+}
+
+/* 你可以微调四个城市字的位置 */
+.city-east  { transform: translate(20%,  -45%); }   /* 沪 */
+.city-west  { transform: translate(-120%, -45%); }  /* 蜀 */
+.city-south { transform: translate(-50%,  0%); }    /* 粤 */
+.city-north { transform: translate(-50%, -100%); }  /* 京 */
+
+/* ====== 右侧「拖拽图片 + 文字」panel ====== */
+
+/* ====== 右侧「沪」素材区 ====== */
+
+/* 整个 panel：贴在折纸右边中间，不挤压折纸 */
+.asset-panel {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translate(40px, -50%); /* 往右 40px，可自己调 */
+  display: none;                    /* JS 打开 */
+}
+
+/* 一整个单元：可拖动（+/- + 图 + 说明） */
+.asset-item {
+  position: absolute;
+  cursor: move;
+}
+
+
+/* ✅ 可拖动图片的大小：想变大/变小就改这里 */
+.asset-img {
+  display: block;
+  width: 250px;   /* ← 比如改成 160px 就更大 */
+  height: auto;
+}
+
+/* 左上角 + / - 文字样式 */
+.asset-toggle {
+  position: absolute;
+  top: -28px;     /* 离图片上方多远 */
+  left: 0;
+  font-size: 30px; /* ← 改这个可以变大或变小 */
+  line-height: 1;
+  color: #000000;  /* ← 这里改颜色，比如 #ff0000 就是红色 */
+  cursor: pointer;
+  user-select: none;
+}
+
+/* 点击 + 后显示在图片下方的红底白字说明 */
+.asset-caption {
+  display: none;                 /* 默认隐藏，点 + 才显示 */
+  margin-top: 0px;
+  padding: 6px 10px;
+  max-width: 250px;              /* 字块宽度，可调 */
+  background: #390000;           /* 🔴 红底 */
+  color: #ffffff;                /* ⚪ 白字 */
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.cap-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 0px;
+}
+
+/* 地址行 */
+.cap-sub {
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+/* 正文段落 */
+.cap-body {
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;              /* 去掉默认段落外边距 */
+}
+
+/* 右上角 CLOSED 标签 */
+.asset-status {
+  position: absolute;
+  top: -23px;     /* 离图片上方多远 */
+  right: 0;
+  font-size: 20px; /* ← 改这个可以变大或变小 */
+  line-height: 1;
+  background: #820b0b;           /* 🔴 红底 */
+  color: #ffffff;  /* ← 这里改颜色，比如 #ff0000 就是红色 */
+  pointer-events: none;  /* 不可点击，只是一个标记 */
+}
+
+
+
+.asset-placeholder {
+  color: #999;
+}
+
+.asset-text-item {
+  display: none;    /* 点 + 之后再显示 */
+}
+
+/* 底部“返回”按钮 */
+.back-btn {
+  position: fixed;
+  left: 50%;
+  bottom: 40px;
+  transform: translateX(-50%);
+  width: 40px;
+  height: auto;
+  cursor: pointer;
+  display: none;
+  z-index: 50;
+}
+
+
+
+.asset-north > .asset-item:nth-of-type(1) {
+  top:   0px;
+  left: 100px;
+}
+
+/* 上海（东）四张卡片的初始位置 */
+.asset-east .item-1 { top:   0px; left: 100px; }
+.asset-east .item-2 { top: -320px; left:   0px; }
+.asset-east .item-3 { top:  50px; left: -950px; }
+.asset-east .item-4 { top: -320px; left: -800px; }
+
+/* 北京（北）两张卡片的初始位置 */
+.asset-north .item-1 { top: -40px; left:   -500px; }
+.asset-north .item-2 { top: -350px; left: -800px; }
+.asset-north .item-3 { top: -10px; left: -800px; }
+
+/* 粤 / 蜀 以后也可以照抄一套 */
+.asset-south .item-1 { top: -40px; left:   50px; }
+.asset-south .item-2 { top: -350px; left: -800px; }
+
+.asset-west .item-1 { top: -40px; left:   200px; }
+.asset-west .item-2 { top: -350px; left: -800px; }
+.asset-west .item-3 { top: -10px; left: -800px; }

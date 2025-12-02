@@ -9,25 +9,37 @@
   <body>
     <!-- 顶部导航：深棕色 + 白字 -->
     <header>
-      <div class="logo-left">Night Matter</div>
+      <div class="logo-left">NIGHT MATTERS</div>
 
       <a href="HomePage.html" class="logo-center">華夜</a>
 
+      <!-- 右上角：只保留一个 ... OF THE NIGHT 的按钮 -->
       <nav class="nav-right">
-        <a href="Collection.html">Collection</a>
-        <span>/</span>
-        <a href="History.html">History</a>
-        <span>/</span>
-        <a href="Future.html">Future</a>
-        <span>/of the Night</span>
+        <button class="menu-button">
+          ... OF THE NIGHT
+        </button>
       </nav>
+
+    <!-- 菜单的半透明背景 -->
+    <div class="menu-bg"></div>
+
+    <!-- 下拉 / 弹出菜单 -->
+    <nav class="menu">
+      <a href="History.html">History</a>
+      <a href="Collection.html">Collection</a>
+      <a href="Future.html">Future</a>
+      <a href="About.html">About</a>
+    </nav>
     </header>
 
     <!-- Collage 主体 -->
     <main class="collage-wrapper">
       <div class="collage">
         <!-- 巨大的「華笙」标题，不可点击 -->
-        <div class="big-title">華笙</div>
+        <div class="big-title">
+          <img src="Asset/Project3.png" alt="華笙" />
+        </div>
+
 
         <!-- 叠叠乐 Collage 图片们 -->
         <div class="collage-item item1">
@@ -58,5 +70,25 @@
     </main>
 
     <!-- 这页不需要任何 JS，保持安静展示 -->
+        <!-- jQuery（如果已经在别的地方引过就不要重复） -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+    $(document).ready(function () {
+      $('.menu-button').click(function () {
+        $(this).toggleClass('open');
+        $('.menu').toggleClass('open');
+        $('.menu-bg').toggleClass('cover');
+      });
+
+      // 点击背景也关闭菜单
+      $('.menu-bg').click(function () {
+        $('.menu-button').removeClass('open');
+        $('.menu').removeClass('open');
+        $('.menu-bg').removeClass('cover');
+      });
+    });
+    </script>
+
   </body>
 </html>

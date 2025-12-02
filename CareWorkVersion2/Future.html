@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Future · 華笙</title>
+
+  <link rel="stylesheet" href="style.css">
+  <!-- Future 页面的额外样式 -->
+  <link rel="stylesheet" href="future.css">
+
+  <!-- Firebase v8 CDN -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase.js"></script>
+  <!-- 本页功能脚本 -->
+  <script src="future.js" defer></script>
+</head>
+
+<body class="future-page">
+  <header>
+      <div class="logo-left">NIGHT MATTERS</div>
+
+      <a href="HomePage.html" class="logo-center">華夜</a>
+
+      <!-- 右上角：只保留一个 ... OF THE NIGHT 的按钮 -->
+      <nav class="nav-right">
+        <button class="menu-button">
+          ... OF THE NIGHT
+        </button>
+      </nav>
+
+    <!-- 菜单的半透明背景 -->
+    <div class="menu-bg"></div>
+
+    <!-- 下拉 / 弹出菜单 -->
+    <nav class="menu">
+      <a href="History.html">History</a>
+      <a href="Collection.html">Collection</a>
+      <a href="Future.html">Future</a>
+      <a href="About.html">About</a>
+    </nav>
+  </header>
+
+  <!-- 主内容：左边表单，右边 event 展示 -->
+  <main class="future-main">
+    <!-- 左侧：提交表单 -->
+    <section class="future-form-wrap">
+    <h2 class="future-title">Future of Night </h2>
+    <p class="future-subtitle">
+        List of clubs, raves, drag shows, and parties you know, and add them to the timeline.
+    </p>
+
+    <form id="event-form">
+        <label class="field">
+        <span>Event Name *</span>
+        <input type="text" id="event-name" required>
+        </label>
+
+        <label class="field">
+        <span>Venue (Club / Space) *</span>
+        <input type="text" id="event-venue" required>
+        </label>
+
+        <label class="field">
+        <span>City / Country *</span>
+        <input type="text" id="event-location" required>
+        </label>
+
+        <label class="field">
+        <span>Date (can be approximate)</span>
+        <input type="text" id="event-date">
+        </label>
+
+        <label class="field">
+        <span>Upload Poster (JPG / PNG)</span>
+        <input type="file" id="event-poster-file" accept="image/*">
+        </label>
+
+        <button type="submit" id="event-submit">Submit</button>
+        <p class="small-note">After you submit, your event will appear in the list on the right.</p>
+    </form>
+    </section>
+
+
+    <section class="future-events-wrap">
+        <h3 class="events-title">Event Archive</h3>
+        <div id="events-container" class="events-grid"></div>
+    </section>
+
+  </main>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function () {
+  $('.menu-button').click(function () {
+    $(this).toggleClass('open');
+    $('.menu').toggleClass('open');
+    $('.menu-bg').toggleClass('cover');
+  });
+
+  // 点击背景也关闭菜单
+  $('.menu-bg').click(function () {
+    $('.menu-button').removeClass('open');
+    $('.menu').removeClass('open');
+    $('.menu-bg').removeClass('cover');
+  });
+});
+</script>
+
+</body>
+</html>

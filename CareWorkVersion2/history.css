@@ -8,11 +8,10 @@ body.history-horizontal {
   height: 100vh;
   overflow: hidden;
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-  background: #ffffff;  /* 随便给个深色，p5 会在上面再画 */
+  background: #ffffff;
 }
 
-
-/* header ... */
+/* 顶部导航栏：白色底，红色字 */
 header {
   position: fixed;
   top: 0;
@@ -22,42 +21,135 @@ header {
   display: flex;
   align-items: center;
   padding: 0 24px;
-  background: #ffffff;
-  color: #000000;
+  background: #ffffff;    /* ✅ 白色底 */
+  color: #d60000;         /* ✅ 导航整体字色红 */
   font-size: 20px;
+  font-weight: 1000;
   letter-spacing: 0.08em;
-  z-index: 100;
+  z-index: 20;
 }
 
 .logo-left {
   flex: 0 0 auto;
 }
 
+/* 中间 “華夜” 也设成红色 */
 .logo-center {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   font-weight: 700;
-  color: #000000;
+  color: #000000;         /* ✅ 红色 */
   text-decoration: none;
 }
 
 .nav-right {
   margin-left: auto;
   display: flex;
-  gap: 6px;
+  align-items: center;
+}
+
+.menu-button {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+
+  /* 关键：全部继承 header 的字体设定 */
+  font-family: inherit;       /* ✅ 跟 NIGHT MATTERS 一样的字体 */
+  font-size: inherit;         /* 20px */
+  font-weight: inherit;       /* 1000 */
+  letter-spacing: inherit;    /* 0.08em */
+  color: inherit;             /* #9f0000 */
+
   text-transform: uppercase;
+
+  /* 去掉默认按钮样式（mac 上尤其明显） */
+  appearance: none;
+  -webkit-appearance: none;
 }
 
-.nav-right a {
+
+
+/* 点击后可以用 open 做一些小变化（可选） */
+.menu-button.open {
+  opacity: 0.7;
+}
+
+/* ========= 弹出菜单背景 ========= */
+
+.menu-bg {
+  position: fixed;
+  inset: 0;                          /* top/right/bottom/left 全部 0 */
+  background: rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  z-index: 800;                      /* 在内容上面、header 下面 */
+}
+
+.menu-bg.cover {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ========= 弹出菜单本体 ========= */
+
+.menu {
+  position: fixed;
+  top: 56px;                         /* 贴在 header 下边 */
+  right: 0;
+  width: 220px;
+  padding: 24px 20px;
+  background: #ffffff;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: right;
+
+  transform: translateY(-15px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 900;
+}
+
+.menu.open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.menu a {
   text-decoration: none;
-  color: #000;
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #d60000;
 }
 
+.menu a:hover {
+  opacity: 0.7;
+}
+
+/* 🔴 顶部红色可视化横条：p5 画布就挂在这里 */
+#p5-bg {
+  position: fixed;
+  top: 56px;      /* 刚好贴在 header 下面 */
+  left: 0;
+  width: 100%;
+  height: 40px;  /* 横条高度，想更窄/更高可以改这个 */
+  background: #d60000;   /* 红色地 */
+  z-index: 5;
+  pointer-events: none;  /* 不挡住上面的交互 */
+}
+
+/* 横向滚动内容：放在红色横条下面 */
 .history-scroll {
   position: absolute;
-  top: 56px;
-  bottom: 36px;
+  top: 96px;           /* 56(header) + 140(红条) = 196 */
+  bottom: 36px;         /* 给底部刻度条留空间 */
   left: 0;
   right: 0;
 
@@ -69,12 +161,9 @@ header {
   overflow-x: auto;
   overflow-y: hidden;
 
-  /* 底色交给 p5-bg 来提供，这里用透明 */
-  background: transparent;
-  color: #d60000;
+  background: #ffffff;
+  color: #d60000;       /* 你要的白底红字 */
 }
-
-
 
 .history-column {
   flex-shrink: 0;
@@ -124,6 +213,7 @@ header {
   align-items: flex-end;
   gap: 16px;
   padding-bottom: 6px;
+  z-index: 15;
 }
 
 .tick {
@@ -142,20 +232,9 @@ header {
   transform: translateX(0);
 }
 
-#p5-bg {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-
-  /* 白色背景，这样整体还是白底 */
-  background: #ffffff;
-}
-
-/* 确保内容盖在画布上面 */
+/* 确保内容在画布之上显示 */
 header,
 .history-scroll,
 .history-strip {
-  position: relative;
   z-index: 10;
 }

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Collection · 華笙</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="collection.css">
+  <link rel="stylesheet"
+        href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+</head>
+
+
+
+<body class="collection-page">
+  <!-- 祥云背景 -->
+  <div id="cloud-bg"></div> 
+
+  <header>
+      <div class="logo-left">NIGHT MATTERS</div>
+
+      <a href="HomePage.html" class="logo-center">華夜</a>
+
+      <!-- 右上角：只保留一个 ... OF THE NIGHT 的按钮 -->
+      <nav class="nav-right">
+        <button class="menu-button">
+          ... OF THE NIGHT
+        </button>
+      </nav>
+
+    <!-- 菜单的半透明背景 -->
+    <div class="menu-bg"></div>
+
+    <!-- 下拉 / 弹出菜单 -->
+    <nav class="menu">
+      <a href="History.html">History</a>
+      <a href="Collection.html">Collection</a>
+      <a href="Future.html">Future</a>
+      <a href="About.html">About</a>
+    </nav>
+  </header>
+
+<main class="collection-main">
+  <div class="collection-center">
+    <!-- 中间的东南西北花 -->
+    <img src="Asset/dnxb.png" alt="collection visual" class="collection-image">
+      <!-- 四个方向的字 -->
+    <img src="Asset/东.png" alt="dong" class="char char-east"  data-photo="east">
+    <img src="Asset/南.png"  alt="nan"  class="char char-south" data-photo="south">
+    <img src="Asset/西.png"   alt="xi"   class="char char-west"  data-photo="west">
+    <img src="Asset/北.png"  alt="bei"  class="char char-north" data-photo="north">
+
+    <!-- 点击后出现的照片容器（先隐藏） -->
+    <div class="detail-photo">
+      <img src="Asset/dongopen.png"  alt="" class="photo photo-east">
+      <img src="Asset/nanopoen.png" alt="" class="photo photo-south">
+      <img src="Asset/xiopen.png"  alt="" class="photo photo-west">
+      <img src="Asset/beiopen.png" alt="" class="photo photo-north">
+
+       <!-- 叠在白色区域上的字：北=京，东=沪，西=蜀，南=粤 -->
+      <img src="Asset/jing.png"  alt="京" class="city city-north">
+      <img src="Asset/hu.png"    alt="沪" class="city city-east">
+      <img src="Asset/shu.png"   alt="蜀" class="city city-west">
+      <img src="Asset/yue.png"    alt="粤" class="city city-south">
+
+      <div class="asset-panel asset-east">
+        <!-- ALL -->
+        <div class="asset-item item-1">
+          <span class="asset-toggle">+</span>
+          <img src="Asset/all.png" class="asset-img" alt="">
+          <span class="asset-status">CLOSED</span>
+
+          <div class="asset-caption">
+            <div class="cap-title">ALL（2017–2025）</div>
+            <div class="cap-sub">上海市静安区襄阳北路17号2楼</div>
+            <p class="cap-body">
+            As the spiritual successor to legendary underground club The Shelter, ALL channels cutting-edge electronic music, UK bass, techno and all kinds of experimental sounds into a long, dark dance floor, making it one of Shanghai’s most vital alternative nightclubs. Artists, queer communities and night owls meet here to drink, dance and lose all sense of time.            
+            </p>
+          </div>
+        </div>
+
+        <div class="asset-item item-2">
+          <span class="asset-toggle">+</span>
+          <img src="Asset/system.png" class="asset-img" alt="">
+          <span class="asset-status">CLOSED</span>
+
+          <div class="asset-caption">
+            <div class="cap-title">System（2020–2025 ） </div>
+            <div class="cap-sub">上海市徐汇区淮海中路1329号云海大厦3层</div>
+            <p class="cap-body">
+              Opened in 2021, SYSTEM is a multi-purpose subculture club that blends art exhibitions, theatre, live shows and an electronic music venue inside a raw, concrete “factory” space. Often compared to Berlin’s Berghain, it draws artists, designers, musicians and nightlife kids who move between exhibitions by day and immersive club nights by dark.
+            </p>
+          </div>
+        </div>
+
+        <div class="asset-item item-3">
+          <span class="asset-toggle">+</span>
+          <img src="Asset/elevator.png" class="asset-img" alt="">
+          <span class="asset-status">CLOSED</span>
+
+          <div class="asset-caption">
+            <div class="cap-title">Elevator（2016–2023）</div>
+            <div class="cap-sub">上海市徐汇区南丹东路265号B1楼</div>
+            <p class="cap-body">
+              Started by a crew of local DJs, Elevator is an underground club that grew from a tiny “rooftop cave” reached by a small lift on Xinle Road to a basement near Xujiahui, remaining a key hub for Shanghai’s electronic music and subcultural scenes. Its no-phone-camera rule fostered an intimate space for regulars and creative communities, and gradually created a place where queer voices didn’t have to be muted.
+            </p>
+          </div>
+        </div>
+
+        <div class="asset-item item-4">
+          <span class="asset-toggle">+</span>
+          <img src="Asset/arkham.png" class="asset-img" alt="">
+          <span class="asset-status">CLOSED</span>
+
+          <div class="asset-caption">
+            <div class="cap-title">Arkham（2013–2020）</div>
+            <div class="cap-sub">上海市黄浦区巨鹿路168号B1</div>
+            <p class="cap-body">
+              Created by local party crew S.T.D., Arkham was a concrete box hidden under Julu Road: a big dance floor, a long bar and a thunderous sound system cramming trap, bass, techno and every kind of low-end into a single night. For a time it was one of Shanghai’s biggest alternative dance floors, drawing people who wanted loud music, sweat and a bit of chaos, and witnessing countless first-time club nights and first encounters with overseas DJs.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 北 · 京 -->
+      <div class="asset-panel asset-north">
+        <!-- Dada -->
+        <div class="asset-item item-1">
+          <span class="asset-toggle">+</span>
+          <img src="Asset/dada.png" class="asset-img" alt="">
+          <span class="asset-status">REOPENED</span>
+
+          <div class="asset-caption">
+            <div class="cap-title">Dada（2012– ）</div>
+            <div class="cap-sub">北京市朝阳区东坝镇半截塔路53号 首创·郎园Station</div>
+            <p class="cap-body">
+              Dada Beijing started in 2012 in a small courtyard off Gulou East Street and later moved
+              into an underground space north of Ritan Park, remaining one of the city’s most emblematic
+              underground electronic music hubs. It sticks to a non-EDM, mixed club sound—from house and
+              techno to disco, funk and bass—with local and international DJs taking turns on the decks
+              and parties happening several nights a week.
+            </p>
+          </div>
+        </div>
+
+        <!-- TiNG -->
+        <div class="asset-item item-2">
+          <span class="asset-toggle">+</span>
+          <img src="Asset/ting.webp" class="asset-img" alt="">
+          <span class="asset-status">CLOSED</span>
+
+          <div class="asset-caption">
+            <div class="cap-title">TiNG Beijing（2024–2025 ）</div>
+            <div class="cap-sub">北京朝阳区日坛北路17号</div>
+            <p class="cap-body">
+              TiNG Beijing sits among the red-brick warehouses of Langyuan Station and has become one
+              of the newer hubs of Beijing’s underground culture. By day it’s a vintage eyewear select
+              shop plus café-bar; only at night does its full “club” identity appear. In an industrial
+              space that keeps the old tracks and warehouse structure, techno, house, bass and more
+              experimental electronic sounds mix with drinks, with parties by local and visiting DJs
+              and indie musicians every weekend.
+            </p>
+          </div>
+        </div>
+
+        <div class="asset-item item-3">
+          <span class="asset-toggle">+</span>
+          <img src="Asset/denglong.jpg" class="asset-img" alt="">
+          <span class="asset-status">REOPENED</span>
+
+          <div class="asset-caption">
+            <div class="cap-title">LANTERN（2010-）</div>
+            <div class="cap-sub">北京市朝阳区工体东路18号中复大厦西门B1</div>
+            <p class="cap-body">
+              Founded by DJ WengWeng and his crew, Lantern started in 2010 in an underground space in the 3.3 Building by Workers’ Stadium and now sits in the basement of Zhongfu Building, long regarded as one of Beijing’s most iconic techno clubs. It focuses almost entirely on harder-edged club sounds—techno, house, minimal and acid—inside a dark, concrete box of heavy low-end and sparse lights, drawing local labels and DJs from around the world and giving many people their first real taste of Beijing’s underground club culture.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="asset-panel asset-south">
+        <div class="asset-item item-1">
+          <span class="asset-toggle">+</span>
+          <img src="Asset/mihn.jpg" class="asset-img" alt="">
+          <span class="asset-status">OPEN</span>
+
+          <div class="asset-caption">
+            <div class="cap-title">MiHn Club（2018-）</div>
+            <div class="cap-sub">香港上环德辅道中279号4楼</div>
+            <p class="cap-body">
+              Mihn Club is a tiny underground club opened in 2018, tucked away on the fourth floor of an old building on Des Voeux Road in Sheung Wan. With a dance floor for fewer than a hundred people, it’s already regarded as one of Hong Kong’s key electronic music hubs. Carefully selected house, techno and other underground club sounds, paired with a top-notch sound system, dim lighting and a strict no-photos rule, create a safer space that welcomes people of all genders and identities to relax, experiment and dance.
+            </p>
+          </div>
+        </div>
+
+        <div class="asset-item item-2">
+          <span class="asset-toggle">+</span>
+          <img src="Asset/oma.jpg" class="asset-img" alt="">
+          <span class="asset-status">OPEN</span>
+
+          <div class="asset-caption">
+            <div class="cap-title">OMA （2014-）</div>
+            <div class="cap-sub">香港中环云咸街79号Harilela House地库LB/F</div>
+            <p class="cap-body">
+OMA is a tiny underground club that opened in 2014, tucked into the basement of an old building around Lan Kwai Fong. The dance floor is small but powered by a serious Funktion-One system and nights that run from midnight until sunrise. Focused on underground-leaning house, techno, trance and bass, it regularly hosts local and international DJs and has become one of the most important night clubs in HK.            </p>
+          </div>
+        </div>
+
+      </div>
+
+
+      <!-- 西 · 蜀 -->
+      <div class="asset-panel asset-west">
+        <div class="asset-item item-1">
+          <span class="asset-toggle">+</span>
+          <img src="Asset/flat.jpg" class="asset-img" alt="">
+          <span class="asset-status">CLOSED</span>
+
+          <div class="asset-caption">
+            <div class="cap-title">FLAT（-2025）</div>
+            <div class="cap-sub">成都市武侯区人民南路四段20号9栋1楼附5</div>
+            <p class="cap-body">
+              Flat is a small underground club tucked into the ground floor of a residential building, with a low-key entrance that opens straight onto a tight bar and tiny dance floor that somehow always feels packed and warm. It leans into house, techno, disco, funk with touches of hip-hop and soul, and weekend nights are often stacked with local and visiting DJs—earning it the nickname “Chengdu’s Funky Town.”            </p>
+          </div>
+        </div>
+
+        <div class="asset-item item-2">
+          <span class="asset-toggle">+</span>
+          <img src="Asset/tag.webp" class="asset-img" alt="">
+          <span class="asset-status">CLOSED</span>
+
+          <div class="asset-caption">
+            <div class="cap-title">.TAG（2014–2025）</div>
+            <div class="cap-sub">成都市武侯区锦绣路7号保利中心3栋A座21楼2118号</div>
+            <p class="cap-body">
+              .TAG is a sky-high club on the 21st floor of Poly Center and one of Chengdu’s defining underground electronic hubs, bringing Berlin- and Amsterdam-influenced house and techno into the clouds. This queer-friendly small venue packs in DJs, producers and dancers from across China for all-night parties and sunrise views, making it a key symbol of Chengdu’s nightlife and indie culture.            </p>
+          </div>
+        </div>
+
+        <div class="asset-item item-3">
+          <span class="asset-toggle">+</span>
+          <img src="Asset/axis.webp" class="asset-img" alt="">
+          <span class="asset-status">CLOSED</span>
+
+          <div class="asset-caption">
+            <div class="cap-title">AXIS</div>
+            <div class="cap-sub">成都市成华区望平街23号纸箱厂2F</div>
+            <p class="cap-body">
+              AXIS is an electronic music club grown in the very heart of Chengdu, describing itself as an “artery” running through the city’s core, driven by the energy of cutting-edge music culture. Opened in October 2019, it’s known for its cocktail-bar-plus-dance-floor layout and ring-shaped light installation, focusing on forward-thinking, diverse and inclusive club sounds—from experimental electronic to deconstructed club—without obsessing over genre labels, and giving a stage to young DJs, producers and niche music.          </div>
+        </div>
+        
+      </div>
+
+    </div>
+
+    <!-- 返回按钮（默认隐藏） -->
+    <img src="Asset/返回.png" alt="返回" class="back-btn">
+
+    
+  </div>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script> <!-- 用来 draggable -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+
+<script src="collection.js"></script>
+<script src="clouds.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function () {
+  $('.menu-button').click(function () {
+    $(this).toggleClass('open');
+    $('.menu').toggleClass('open');
+    $('.menu-bg').toggleClass('cover');
+  });
+
+  // 点击背景也关闭菜单
+  $('.menu-bg').click(function () {
+    $('.menu-button').removeClass('open');
+    $('.menu').removeClass('open');
+    $('.menu-bg').removeClass('cover');
+  });
+});
+</script>
+
+
+</body>
+</html>

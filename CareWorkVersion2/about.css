@@ -1,0 +1,167 @@
+/* reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* About 页 body */
+body.about-page {
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  background: #ffffff;
+  color: #111;
+}
+
+/* 顶部统一 banner：白底红字 */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  background: #ffffff;
+  color: #9f0000;
+  font-size: 20px;
+  font-weight: 1000;
+  letter-spacing: 0.08em;
+  z-index: 20;
+}
+
+.logo-left {
+  flex: 0 0 auto;
+}
+
+.logo-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: 700;
+  color: #000000;
+  text-decoration: none;
+}
+
+.nav-right {
+  font-size: 20px;
+  margin-left: auto;
+  display: flex;
+  gap: 6px;
+  text-transform: uppercase;
+}
+
+.menu-button {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+
+  /* 关键：全部继承 header 的字体设定 */
+  font-family: inherit;       /* ✅ 跟 NIGHT MATTERS 一样的字体 */
+  font-size: inherit;         /* 20px */
+  font-weight: inherit;       /* 1000 */
+  letter-spacing: inherit;    /* 0.08em */
+  color: inherit;             /* #9f0000 */
+
+  text-transform: uppercase;
+
+  /* 去掉默认按钮样式（mac 上尤其明显） */
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+
+
+/* 点击后可以用 open 做一些小变化（可选） */
+.menu-button.open {
+  opacity: 0.7;
+}
+
+/* ========= 弹出菜单背景 ========= */
+
+.menu-bg {
+  position: fixed;
+  inset: 0;                          /* top/right/bottom/left 全部 0 */
+  background: rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  z-index: 800;                      /* 在内容上面、header 下面 */
+}
+
+.menu-bg.cover {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ========= 弹出菜单本体 ========= */
+
+.menu {
+  position: fixed;
+  top: 56px;                         /* 贴在 header 下边 */
+  right: 0;
+  width: 220px;
+  padding: 24px 20px;
+  background: #ffffff;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: right;
+
+  transform: translateY(-15px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 900;
+}
+
+.menu.open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.menu a {
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #d60000;
+}
+
+.menu a:hover {
+  opacity: 0.7;
+}
+
+/* ===== 中间图片区域 ===== */
+
+/* 让 main 占满视口高度，并把图片居中 */
+.about-main {
+  min-height: 100vh;
+  padding-top: 80px;              /* 留出 header 的位置（56px 上下略留一点空） */
+  padding-bottom: 40px;
+  display: flex;
+  align-items: center;            /* 垂直居中 */
+  justify-content: center;        /* 水平居中 */
+}
+
+/* 素材图本身：大小在这里调 */
+.about-poster {
+  display: block;
+  max-width: 60vw;   /* ← 宽度上限：占视口 80%，想大就调到 90vw，想小就 60vw */
+  height: auto;
+}
+
+/* 手机适配，可以让图稍大一点 */
+@media (max-width: 768px) {
+  .about-main {
+    padding-top: 70px;
+  }
+
+  .about-poster {
+    max-width: 95vw;
+  }
+}

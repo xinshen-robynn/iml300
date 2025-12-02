@@ -1,0 +1,211 @@
+/* 整体风格：白底 + 深红字，和 History 一致 */
+body.future-page {
+  background: #ffffff;
+  color: #b01020;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+    Arial, "Taiwanes", "Noto Sans SC", sans-serif;
+}
+
+/* main 布局：左边表单，右边 grid */
+.future-main {
+  padding: 120px 60px 60px; /* 给 header 留空间 */
+  display: grid;
+  grid-template-columns: minmax(260px, 320px) minmax(0, 1fr);
+  gap: 3rem;
+}
+
+/* 左侧表单卡片 */
+.future-form-wrap {
+  border: 1px solid #b01020;
+  border-radius: 24px;
+  padding: 1.8rem 1.6rem;
+  background: #fff;
+  position: sticky;
+  top: 100px;  /* 滚动时左侧固定 */
+}
+
+.future-title {
+  font-size: 1.5rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.future-subtitle {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 1.4rem;
+}
+
+/* 表单字段 */
+#event-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.field span {
+  color: #b01020;
+}
+
+.field input {
+  width: 100%;
+  border-radius: 999px;
+  border: 1px solid #b01020;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.9rem;
+  background: #fff;
+  color: #111;
+  outline: none;
+}
+
+.field input::placeholder {
+  color: #b01020aa;
+  font-size: 0.75rem;
+}
+
+.field input:focus {
+  box-shadow: 0 0 0 1px #b01020;
+}
+
+/* 提交按钮 */
+#event-submit {
+  margin-top: 0.6rem;
+  border-radius: 999px;
+  border: 1px solid #b01020;
+  background: #b01020;
+  color: #fff;
+  padding: 0.7rem 1.2rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+#event-submit:hover {
+  background: #e02a3a;
+  box-shadow: 0 10px 30px rgba(176, 16, 32, 0.3);
+  transform: translateY(-1px);
+}
+
+#event-submit:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.small-note {
+  margin-top: 0.4rem;
+  font-size: 0.7rem;
+  color: #999;
+}
+
+/* 右侧 event 区 */
+.future-events-wrap {
+  min-height: 50vh;
+}
+
+.events-title {
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+/* 卡片 grid */
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)); /* 一行 3 个 */
+  gap: 1.4rem;
+}
+
+/* 单个 event 卡片 */
+.event-card {
+  border-radius: 20px;
+  border: 1px solid #b01020;
+  background: #fff7f7;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 220px;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(176, 16, 32, 0.25);
+}
+
+/* 海报部分 */
+.event-poster {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background: #fff;
+  border-bottom: 1px solid #b01020;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.event-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 文本部分 */
+.event-info {
+  padding: 0.8rem 0.9rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.event-name {
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.event-venue {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.event-meta {
+  font-size: 0.78rem;
+  color: #444;
+}
+
+/* 没有海报时的占位 */
+.event-poster-placeholder {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #b01020;
+}
+
+/* 响应式：窄屏时上下排布 */
+@media (max-width: 900px) {
+  .future-main {
+    padding: 100px 20px 40px;
+    grid-template-columns: 1fr;
+  }
+
+  .future-form-wrap {
+    position: static;
+  }
+}
