@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Robynn Shen | IML300 Homepage</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+        Arial, "Noto Sans SC", sans-serif;
+      background: #000000;          /* 全黑 */
+      color: #f5f5f5;
+    }
+
+    a {
+      color: hsl(357, 100%, 79%);               /* 红色链接 */
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* 中间内容区（保持居中） */
+    .page-wrap {
+      max-width: 1040px;
+      margin: 0 auto;
+      min-height: 100vh;
+      background: #000000;          /* 也全黑 */
+      padding-bottom: 80px;
+    }
+
+    /* 顶部导航 */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: #000000;
+      border-bottom: 1px solid #1e1e1e;
+    }
+
+    .nav-inner {
+      padding: 16px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .logo {
+      font-size: 1.1rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #ff3640;              /* nav 左边标题红色 */
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      font-size: 0.9rem;
+      text-transform: lowercase;
+    }
+
+    .nav-links a {
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      color: #ff3640;              /* 导航文字红色 */
+    }
+    .nav-links a:hover {
+      border-color: #ff3640;
+      background: #111;
+      text-decoration: none;
+    }
+
+    .btn-outline {
+      border-radius: 999px;
+      padding: 8px 14px;
+      border: 1px solid #ff3640;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #ff3640;
+      background: transparent;
+    }
+    .btn-outline:hover {
+      background: #ff3640;
+      color: #000;
+      text-decoration: none;
+    }
+
+    /* 主体 */
+    main {
+      padding: 32px 32px 60px;
+    }
+
+    section {
+      margin-bottom: 64px;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: #ff3640;               /* 小标题红色 */
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 16px;
+      color: #ffffff;
+    }
+
+    .section-desc {
+      max-width: 640px;
+      font-size: 0.95rem;
+      color: #c3c3c3;
+      margin-bottom: 24px;
+    }
+
+    /* HERO / ABOUT */
+    .hero {
+      padding-top: 32px;
+      padding-bottom: 40px;
+    }
+
+    .hero-mainline {
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 800;
+      line-height: 0.9;
+      text-transform: lowercase;
+      margin-bottom: 16px;
+    }
+
+    .hero-subline {
+      font-size: 1.2rem;
+      margin-bottom: 16px;
+      color: #f5f5f5;
+    }
+
+    .hero-meta {
+      font-size: 0.9rem;
+      color: #aaaaaa;
+      margin-bottom: 18px;
+    }
+
+    .hero-body {
+      max-width: 520px;
+      font-size: 0.95rem;
+      color: #c3c3c3;
+    }
+
+    /* 已删除 hero 浮动小窗口，所以不再需要 hero-floating 的 HTML */
+
+    /* 通用 card / grid */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #050505;
+      border-radius: 18px;
+      border: 1px solid #262626;
+      padding: 18px 18px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .card-tag {
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #ff3640;
+    }
+
+    .card-title {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .card-desc {
+      font-size: 0.9rem;
+      color: #c3c3c3;
+    }
+
+    .card-link {
+      font-size: 0.9rem;
+      margin-top: 4px;
+    }
+
+    .card-iframe {
+      width: 100%;
+      border-radius: 14px;
+      border: 1px solid #262626;
+      overflow: hidden;
+      background: #111;
+      margin-top: 6px;
+    }
+
+    .card-iframe iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .project-desc {
+      font-size: 0.9rem;
+      color: #d0d0d0;
+    }
+
+    /* 让 Project 01/02/03 的窗口变大 & 单列展示 */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr); /* 一行一个卡片 */
+      gap: 24px;
+    }
+    .projects-grid .card-iframe {
+      height: 420px;  /* 大窗口，看清整个缩小页面 */
+    }
+
+    /* p5 exercises 表格 */
+    .list-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      background: #050505;
+      border-radius: 18px;
+      border: 1px solid #262626;
+      overflow: hidden;
+    }
+
+    .list-table thead {
+      background: #111;
+    }
+
+    .list-table th,
+    .list-table td {
+      padding: 10px 14px;
+      text-align: left;
+      border-bottom: 1px solid #202020;
+      vertical-align: top;
+    }
+
+    .list-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .list-label {
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    /* p5 预览窗口稍小即可 */
+    .p5-preview {
+      width: 400px;
+      height: 400px;
+      border-radius: 12px;
+      border: 1px solid #262626;
+      overflow: hidden;
+      background: #111;
+    }
+    .p5-preview iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* vibe coding：只要大一点的图片缩略图 */
+    .vibe-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-top: 16px;
+    }
+
+    .vibe-card {
+      background: #050505;
+      border-radius: 18px;
+      border: 1px solid #262626;
+      padding: 10px;
+    }
+
+    .vibe-img {
+      width: 100%;
+      aspect-ratio: 4 / 3;      /* 长方形；改成 1 / 1 就是正方形 */
+      object-fit: cover;
+      border-radius: 14px;
+      display: block;
+    }
+
+    .vibe-index {
+      margin-top: 6px;
+      font-size: 0.8rem;
+      color: #ff3640;
+      text-align: right;
+    }
+
+    .vibe-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 6px;
+        font-size: 0.8rem;
+    }
+
+    .vibe-name {
+        color: #f5f5f5;   /* 或者 #c3c3c3 更低调一点 */
+    }
+
+    /* 已有的 .vibe-index 保留，再加链接样式 */
+    .vibe-index {
+        color: #ff3640;
+        text-align: right;
+    }
+
+    .vibe-index a {
+        color: #ff3640;
+        text-decoration: none;
+    }
+
+    .vibe-index a:hover {
+        text-decoration: underline;
+    }
+
+    /* Reflection */
+    .reflection-box {
+      background: #050505;
+      border-radius: 18px;
+      border: 1px solid #262626;
+      padding: 18px 18px 20px;
+      font-size: 0.95rem;
+      color: #d0d0d0;
+      max-width: 720px;
+    }
+
+    footer {
+      border-top: 1px solid #1e1e1e;
+      padding: 16px 32px 28px;
+      font-size: 0.8rem;
+      color: #8a8a8a;
+      text-align: center;
+    }
+
+    @media (max-width: 800px) {
+      main {
+        padding: 24px 18px 48px;
+      }
+      .nav-inner {
+        padding: 12px 18px;
+        flex-wrap: wrap;
+      }
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+    }
+
+    /* --- exercises cards layout --- */
+
+    .exercise-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    }
+
+    .exercise-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(260px, 1fr);
+    gap: 16px;
+    background: #050505;
+    border-radius: 18px;
+    border: 1px solid #262626;
+    padding: 16px 18px 18px;
+    }
+
+    .exercise-text {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    }
+
+    .exercise-label {
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #ff3640;   /* 跟你导航的红色一致 */
+    }
+
+    .exercise-title {
+    font-size: 1rem;
+    font-weight: 600;
+    }
+
+    .exercise-note {
+    font-size: 0.9rem;
+    color: #c3c3c3;
+    }
+
+    .exercise-link {
+    font-size: 0.85rem;
+    color: #ff3640;
+    }
+    .exercise-link:hover {
+    text-decoration: underline;
+    }
+
+    .exercise-preview {
+    width: 100%;
+    border-radius: 14px;
+    border: 1px solid #262626;
+    overflow: hidden;
+    background: #111;
+    height: 400px;  /* 想更大可以改成 260 / 280 */
+    }
+    .exercise-preview iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    }
+
+    /* mobile：上下堆叠 */
+    @media (max-width: 800px) {
+    .exercise-card {
+        grid-template-columns: minmax(0, 1fr);
+    }
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="page-wrap">
+    <!-- 顶部导航 -->
+    <header>
+      <div class="nav-inner">
+        <div class="logo">IML300 · ROBYNN SHEN</div>
+        <nav class="nav-links">
+          <a href="#about">about</a>
+          <a href="#pecha">presentation</a>
+          <a href="#projects">projects</a>
+          <a href="#exercises">p5.js</a>
+          <a href="#vibe">vibe coding</a>
+          <a href="#reflection">reflection</a>
+        </nav>
+        <a class="btn-outline" href="https://github.com/xinshen-robynn/iml300" target="_blank">
+          full site
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <!-- ABOUT / HERO -->
+      <section class="hero" id="about">
+        <div class="section-label">main / about</div>
+        <div class="hero-mainline">about this<br>iml300 homepage</div>
+        <div class="hero-subline">
+          Coding b/w Bold Visuals and Small Feelings.
+        </div>
+        <div class="hero-meta">
+          SHANGHAI 囡 · Based in los angeles · USC · fall 2025
+        </div> 
+        <p class="hero-body">
+          I use p5.js, HTML/CSS, and sound to build small interactive pieces
+          that sit between physical and digital life. This page gathers all of my
+          IML300 work: one Pecha Kucha presentation, three main projects,
+          weekly p5.js exercises, and ten in-class vibe coding sessions. Hope You Enjoy My Work.
+        </p>
+      </section>
+
+      <!-- Pecha Kucha -->
+      <section id="pecha">
+        <div class="section-label">presentation</div>
+        <h2>Pecha Kucha</h2>
+        <p class="section-desc">
+          Artist Presentation · Olivia Jack
+        </p>
+
+        <div class="card-grid">
+          <article class="card">
+            <div class="card-tag">Pecha Kucha</div>
+            <div class="card-title">IML300 Pecha Kucha ·  Olivia Jack · Hydra </div>
+            <p class="card-desc">
+              A short presentation about the Olivia Jack and her major work Hydra. This presentation
+              briefly touches on how hydra works and how us as users could play around it. 
+            </p>
+            <div class="card-iframe" style="height:320px;">
+              <img src="homepageAssets/Screenshot 2025-12-07 at 14.52.06.png" 
+                title="Pecha Kucha slides"
+              ></iframe>
+            </div>
+            <p class="card-link">
+              ▶️ <a href="https://drive.google.com/file/d/17-nUJFnRxvsFfmLKrTdCmbdc39wXl5vM/view" target="_blank">
+                open slides in new tab
+              </a>
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects">
+        <div class="section-label">projects</div>
+        <h2>three core works</h2>
+        <p class="section-desc">
+          Interactive Audio & Visual in p5.js, a hypertext narrative about an eraser,
+          and a networked care website for endangered Chinese nightlife and rave culture.
+        </p>
+
+        <div class="projects-grid">
+          <!-- Project 1 -->
+          <article class="card">
+            <div class="card-tag">project 01 · interactive audio & visual</div>
+            <div class="card-title">DJ Panel Halftone Mixer</div>
+            <p class="project-desc">
+              This project is an interactive multimedia design inspired by the panel
+              of a DJ turntable. Users can change audio parameters by moving a red
+              circle on the control panel. Two variables shift based on the circle’s
+              (x, y) position inside the grey square: low EQ and resonance. As these
+              sound parameters change, the halftone pattern in the upper right corner
+              also morphs in size and density, turning audio into texture. I wanted
+              the sketch to feel like a small, playful mixing desk where you can
+              “scratch” between sound and image instead of records.
+            </p>
+            <div class="card-iframe">
+              <iframe
+                src="https://editor.p5js.org/xinshen/full/1HopXRJGm"
+                title="Interactive AV project"
+              ></iframe>
+            </div>
+            <p class="card-link">
+              🔗 <a href="https://editor.p5js.org/xinshen/sketches/1HopXRJGm" target="_blank">
+                view p5.js editor
+              </a>
+            </p>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="card">
+            <div class="card-tag">project 02 · hypernarrative</div>
+            <div class="card-title">The Life of an Eraser</div>
+            <p class="project-desc">
+              “The Life of an Eraser” is a browser-based hypernarrative that follows
+              a small pink eraser through different pages of a digital notebook.
+              Each page shifts color, layout, and text tone as the eraser moves,
+              echoing the feeling of rewriting, fixing, and sometimes over-erasing
+              moments in our lives. Instead of a single linear storyline, the
+              project invites viewers to click around, get a little lost, and
+              discover fragments of memory and interface glitches. I wanted the piece
+              to feel like a quiet loop between perfectionism and letting go,
+              mirroring how we constantly edit ourselves online.
+            </p>
+            <div class="card-iframe">
+              <iframe
+                src="https://xinshen-robynn.github.io/iml300/HyperNarrative/Page1.html"
+                title="HyperNarrative"
+              ></iframe>
+            </div>
+            <p class="card-link">
+              📝 <a href="https://docs.google.com/document/d/10cFCLUlw-jDa8RvqIeL_IWAiSrGKU5p0f8AEXv5V_Is/edit?usp=sharing" target="_blank">
+                concept doc
+              </a>
+              ·
+              <a href="https://xinshen-robynn.github.io/iml300/HyperNarrative/Page1.html" target="_blank">
+                open full site
+              </a>
+            </p>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="card">
+            <div class="card-tag">project 03 · networked care</div>
+            <div class="card-title">Night Matters</div>
+            <p class="project-desc">
+              Night Matters is a cross-media archival project centered on contemporary night culture. Focusing on underground clubs, electronic music, and youth subcultures in Asian cities, it documents how people move, gather, and transform after dark. Through an interactive website, visual storytelling, and real club artifacts, Night Matters captures the textures of the night—sound, sweat, light, and fleeting emotions. It is both a living archive and an ongoing experiment in how nightlife can shape identity, community, and future imaginaries of the city.
+            </p>
+            <div class="card-iframe">
+              <iframe
+                src="https://xinshen-robynn.github.io/iml300/CareWorkVersion2/HomePage.html"
+                title="Networked Care"
+              ></iframe>
+            </div>
+            <p class="card-link">
+              🔗 <a href="https://github.com/xinshen-robynn/iml300/tree/main/CareWorkVersion2" target="_blank">
+                open full site
+              </a>
+              ·
+              📝 <a href="https://docs.google.com/document/d/18qvPZ8TwNWJtmyxveUCZ1a4hM1OwAQvHun_fdhJdStw/edit?usp=sharing" target="_blank">
+                concept doc
+              </a>
+            </p>
+          </article>
+        </div>
+      </section>
+
+    <!-- p5.js Exercises -->
+    <section id="exercises">
+    <div class="section-label">p5.js</div>
+    <h2>exercises</h2>
+    <p class="section-desc">
+        Five weekly sketches that built my comfort with drawing, iteration,
+        sound, and text in p5.js.
+    </p>
+
+    <div class="exercise-list">
+        <!-- E1 -->
+        <article class="exercise-card">
+        <div class="exercise-text">
+            <div class="exercise-label">01 · face</div>
+            <h3 class="exercise-title">Interactive Face</h3>
+            <p class="exercise-note">
+            a playful portrait that reacts to the cursor.
+            </p>
+            <a
+            class="exercise-link"
+            href="https://editor.p5js.org/xinshen/sketches/8H-IBFf4i"
+            target="_blank"
+            >
+            view p5.js editor
+            </a>
+        </div>
+        <div class="exercise-preview">
+            <iframe
+            src="https://editor.p5js.org/xinshen/full/8H-IBFf4i"
+            title="Exercise 1"
+            ></iframe>
+        </div>
+        </article>
+
+        <!-- E2 -->
+        <article class="exercise-card">
+        <div class="exercise-text">
+            <div class="exercise-label">02 · drawing tool</div>
+            <h3 class="exercise-title">Looming Brush</h3>
+            <p class="exercise-note">
+            a drawing tool that leaves layered traces.<br />
+            simulation of Marisa Purcell's work with multiple brush modes.
+            </p>
+            <a
+            class="exercise-link"
+            href="https://editor.p5js.org/xinshen/sketches/ypsiMjAAQ"
+            target="_blank"
+            >
+            view p5.js editor
+            </a>
+        </div>
+        <div class="exercise-preview">
+            <iframe
+            src="https://editor.p5js.org/xinshen/full/ypsiMjAAQ"
+            title="Exercise 2"
+            ></iframe>
+        </div>
+        </article>
+
+        <!-- E3 -->
+        <article class="exercise-card">
+        <div class="exercise-text">
+            <div class="exercise-label">03 · iterative pattern</div>
+            <h3 class="exercise-title">For Loop Pattern</h3>
+            <p class="exercise-note">
+            a for loop pattern that interacts with the cursor position.
+            </p>
+            <a
+            class="exercise-link"
+            href="https://editor.p5js.org/xinshen/full/BW0xf6ASo"
+            target="_blank"
+            >
+            view p5.js editor
+            </a>
+        </div>
+        <div class="exercise-preview">
+            <iframe
+            src="https://editor.p5js.org/xinshen/full/BW0xf6ASo"
+            title="Exercise 3"
+            ></iframe>
+        </div>
+        </article>
+
+        <!-- E4 -->
+        <article class="exercise-card">
+        <div class="exercise-text">
+            <div class="exercise-label">04 · 30s music video</div>
+            <h3 class="exercise-title">p5.js Animation</h3>
+            <p class="exercise-note">
+            music animation of Fei Xiang's classic song “冬天里的一把火”.
+            </p>
+            <a
+            class="exercise-link"
+            href="https://editor.p5js.org/xinshen/full/d8S18G6Cf"
+            target="_blank"
+            >
+            view p5.js editor
+            </a>
+        </div>
+        <div class="exercise-preview">
+            <iframe
+            src="https://editor.p5js.org/xinshen/full/d8S18G6Cf"
+            title="Exercise 4"
+            ></iframe>
+        </div>
+        </article>
+
+        <!-- E5 -->
+        <article class="exercise-card">
+        <div class="exercise-text">
+            <div class="exercise-label">05 · interactive poetry</div>
+            <h3 class="exercise-title">My Words, His Words</h3>
+            <p class="exercise-note">
+            extract from Xiaobo Wang's work turned into floating, clickable text.
+            </p>
+            <a
+            class="exercise-link"
+            href="https://editor.p5js.org/xinshen/sketches/Wl2xMqjyD"
+            target="_blank"
+            >
+            view p5.js editor
+            </a>
+        </div>
+        <div class="exercise-preview">
+            <iframe
+            src="https://editor.p5js.org/xinshen/full/Wl2xMqjyD"
+            title="Exercise 5"
+            ></iframe>
+        </div>
+        </article>
+    </div>
+    </section>
+
+
+      <!-- Vibe Coding -->
+    <section id="vibe">
+    <div class="section-label">vibe coding</div>
+    <h2>ten weekly vibes</h2>
+    <p class="section-desc">
+        Fast in-class sketches, shown here as image thumbnails only.
+    </p>
+
+    <div class="vibe-grid">
+        <div class="vibe-card">
+        <img src="homepageAssets/vb1.png" alt="Vibe 01" class="vibe-img" />
+        <div class="vibe-meta">
+            <div class="vibe-name">Daily Vibe Coding Tarot</div>
+            <div class="vibe-index">
+            <a href="https://claude.ai/public/artifacts/782a7230-f758-4591-8aa1-6c3a84772dad" target="_blank">01</a>
+            </div>
+        </div>
+        </div>
+
+        <div class="vibe-card">
+        <img src="homepageAssets/vb2.png" alt="Vibe 02" class="vibe-img" />
+        <div class="vibe-meta">
+            <div class="vibe-name">Icon Flux Generator</div>
+            <div class="vibe-index">
+            <a href="https://claude.ai/public/artifacts/9c88c680-4a25-4891-9b0e-77274794852a" target="_blank">02</a>
+            </div>
+        </div>
+        </div>
+
+        <div class="vibe-card">
+        <img src="homepageAssets/vb3.png" alt="Vibe 03" class="vibe-img" />
+        <div class="vibe-meta">
+            <div class="vibe-name">Reflection Journey</div>
+            <div class="vibe-index">
+            <a href="https://flashback-recap.lovable.app/" target="_blank">03</a>
+            </div>
+        </div>
+        </div>
+
+        <div class="vibe-card">
+        <img src="homepageAssets/vb4.png" alt="Vibe 04" class="vibe-img" />
+        <div class="vibe-meta">
+            <div class="vibe-name">Abode Analyzer</div>
+            <div class="vibe-index">
+            <a href="https://abode-analyzer-app.lovable.app" target="_blank">04</a>
+            </div>
+        </div>
+        </div>
+
+        <div class="vibe-card">
+        <img src="homepageAssets/vb5.png" alt="Vibe 05" class="vibe-img" />
+        <div class="vibe-meta">
+            <div class="vibe-name">Infer the Gap</div>
+            <div class="vibe-index">
+            <a href="https://infer-the-gap.lovable.app" target="_blank">05</a>
+            </div>
+        </div>
+        </div>
+
+        <div class="vibe-card">
+        <img src="homepageAssets/vb6.png" alt="Vibe 06" class="vibe-img" />
+        <div class="vibe-meta">
+            <div class="vibe-name">Shape Space Canvas</div>
+            <div class="vibe-index">
+            <a href="https://shape-space-canvas.lovable.app" target="_blank">06</a>
+            </div>
+        </div>
+        </div>
+
+        <div class="vibe-card">
+        <img src="homepageAssets/vb7.png" alt="Vibe 07" class="vibe-img" />
+        <div class="vibe-meta">
+            <div class="vibe-name">URL to Poem</div>
+            <div class="vibe-index">
+            <a href="https://verse-from-url.lovable.app" target="_blank">07</a>
+            </div>
+        </div>
+        </div>
+
+        <div class="vibe-card">
+        <img src="homepageAssets/vb8.png" alt="Vibe 08" class="vibe-img" />
+        <div class="vibe-meta">
+            <div class="vibe-name">Soft Layout Playground</div>
+            <div class="vibe-index">
+            <a href="https://soft-layout-playground.lovable.app" target="_blank">08</a>
+            </div>
+        </div>
+        </div>
+
+        <div class="vibe-card">
+        <img src="homepageAssets/vb9.png" alt="Vibe 09" class="vibe-img" />
+        <div class="vibe-meta">
+            <div class="vibe-name">Keyword Gravity</div>
+            <div class="vibe-index">
+            <a href="https://word-gravity-field.lovable.app" target="_blank">09</a>
+            </div>
+        </div>
+        </div>
+
+        <div class="vibe-card">
+        <img src="homepageAssets/vb10.png" alt="Vibe 10" class="vibe-img" />
+        <div class="vibe-meta">
+            <div class="vibe-name">Jam Script Live</div>
+            <div class="vibe-index">
+            <a href="https://jam-script-live.lovable.app" target="_blank">10</a>
+            </div>
+        </div>
+        </div>
+    </div>
+    </section>
+
+
+      <!-- Reflection（自己写） -->
+      <section id="reflection">
+        <div class="section-label">reflection</div>
+        <h2>vibe coding reflection</h2>
+        <p class="section-desc">
+          100–200 words written in my own voice about what I learned, enjoyed,
+          and questioned through vibe coding this semester.
+        </p>
+
+        <div class="reflection-box">
+          <p>
+            Vibe Coding is for sure the most important skill that I have learned from this class.
+            Learning how to give clear prompt and revise & edit the returned code is as important as to
+            actually able to write code oneself. Every part of my work includes sort of vibe coding. AI,
+            as for coding, has definetly become the best teacher when coders are confused and struggle to acchieve
+            the intent visual effect. Thank You Q. For being so inspiring. And Friendly. This is the first time for me 
+            to have the feeling to want to become someone who likes my professor. Thank you for being a teacher. 
+            Hope someday I will see you again as an actual coder. 
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      IML300 Homepage · created by Robynn (Xin) Shen · last updated December 2025
+    </footer>
+  </div>
+</body>
+</html>
